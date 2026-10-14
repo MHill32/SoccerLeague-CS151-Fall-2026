@@ -47,4 +47,28 @@ public class Player implements StatTrack {
         this.yellowCards = 0;
         this.redCards = 0;
     }
+
+    public void scoreGoal(){
+        if (redCards > 0){
+            throw new IllegalStateException("Player cannot score while suspended");
+        }
+        goals++;
+    }
+
+    public void recordAssist(){
+         if (redCards > 0){
+            throw new IllegalStateException("Player cannot assist while suspended");
+        }
+        assists++;
+    }
+
+    public void receieveCard (String cardType) {
+        if (cardType.equalsIgnoreCase("yellow")){
+            yellowCards++;
+        } else if (cardType.equalsIgnoreCase("red")) {
+            redCards++;
+        } else {
+            throw new IllegalArgumentException("Invalid card type");
+        }
+    }
 }
