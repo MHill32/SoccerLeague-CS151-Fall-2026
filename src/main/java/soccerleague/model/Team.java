@@ -1,4 +1,5 @@
 package main.java.soccerleague.model;
 
-public class Team {
+import main.java.soccerleague.interfaces.StatTrack;
+public class Team implements StatTrack {
 }
