@@ -4,6 +4,7 @@
 package main.java.soccerleague.model;
 
 import java.util.ArrayList;
+
 public class Match {
     private String matchId;
 
