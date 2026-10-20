@@ -1,6 +1,6 @@
 /*
  * Author: Mason Hill
- */
+*/
 package main.java.soccerleague.model;
 
 import java.util.ArrayList;
