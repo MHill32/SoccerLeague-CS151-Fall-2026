@@ -95,4 +95,83 @@ public class Team implements StatTrack {
         coach = null;
     }
 
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    // Returns a copy so callers cannot directly change the team's roster
+    public ArrayList<Player> getPlayers(){
+        return new ArrayList<>(players);
+    }
+
+    public Coach getCoach(){
+        return coach;
+    }
+
+    public int getRosterSize(){
+        return players.size();
+    }
+
+    // Average OVR of team (based off the team's roster)
+    public double calculateOverallRating() {
+        if (players.isEmpty()){
+            return 0.0;
+        }
+
+        double total = 0.0;
+
+        for (Player player : players){
+            total += player.getOverall();
+        }
+
+        return total / players.size();
+    }
+
+    // Average simulated attack of all players in the team's roster
+    public double calculateAttackRating() {
+        if(players.isEmpty()){
+            return 0.0;
+        }
+        double total = 0.0;
+
+        for (Player player : players){
+            total += player.getSimAttack();
+        }
+
+        return total / players.size();
+    }
+
+    // Average defense of all players on team's roster
+        public double calculateDefRating() {
+        if(players.isEmpty()){
+            return 0.0;
+        }
+        double total = 0.0;
+
+        for (Player player : players){
+            total += player.getDefending();
+        }
+
+        return total / players.size();
+    }
+
+    @Override 
+    public String toString() {
+        return "Team{"
+        + "teamID='" + teamID + '\''
+        + ", name='" + name + '\''
+        + ", city='" + city + '\''
+        + ", rosterSize=" + players.size()
+        + ", hasCoach=" + (coach != null)
+        + '}';
+    }
+
 }
