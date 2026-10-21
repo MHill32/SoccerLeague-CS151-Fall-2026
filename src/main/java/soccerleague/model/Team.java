@@ -51,4 +51,16 @@ public class Team implements StatTrack {
         }
     }
 
+    public void transferPlayer (Player player, Team newTeam){
+
+    }
+
+    public void addCoach(Coach coach){
+
+    }
+    
+    public void removeCoach(){
+
+    }
+
 }
