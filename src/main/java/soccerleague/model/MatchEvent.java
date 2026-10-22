@@ -81,6 +81,51 @@ public abstract class MatchEvent {
         this.minute = newMinute;
     }
 
+    protected void validateParticipant(Match match) {
+        if (match == null) {
+            throw new InvalidMatchOperationException("Match cannot be null");
+        }
+        if (applied) {
+            throw new InvalidMatchOperationException("This event was already added to a match");
+        }
+        if (!match.isStarted() || match.isCompleted()) {
+            throw new InvalidMatchOperationException("Events can only be added while the match is in progress");
+        }
+        if (team != match.getHomeTeam() && team != match.getAwayTeam()) {
+            throw new InvalidMatchOperationException(team.getName() + " is not playing in this match");
+        }
+        if (!team.getPlayers().contains(player)) {
+            throw new InvalidMatchOperationException(player.getName() + " does not play for " + team.getName());
+        }
+    }
+
+    public static boolean isSentOff(Match match, Player player) {
+        for (MatchEvent event : match.getEvents()) {
+            if (event instanceof CardEvent && event.getPlayer() == player
+                    && ((CardEvent) event).isSendingOff()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        MatchEvent other = (MatchEvent) o;
+        return minute == other.minute && player == other.player && team == other.team;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getClass(), minute, player, team);
+    }
+
     @Override
     public String toString() {
         return minute + "' " + getEventType() + " - " + player.getName() + " (" + team.getName() + ")";
