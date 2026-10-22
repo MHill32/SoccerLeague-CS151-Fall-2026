@@ -1,8 +1,10 @@
 package main.java.soccerleague.model;
 
 import main.java.soccerleague.interfaces.StatTrack;
+import java.util.HashSet;
 
 public class Player implements StatTrack {
+    private static final HashSet<String> registeredPlayerIDs = new HashSet<>();
 
     private String playerID;
     private String name;
@@ -62,7 +64,13 @@ public class Player implements StatTrack {
         validateRating(simAttack, "Simulation attack");
         validateRating(simDiscipline, "Simulation discipline");
 
-        this.playerID = playerID.trim();
+        String cleanedPlayerID = playerID.trim();
+        // Prevents 2 players having the same ID
+        if(registeredPlayerIDs.contains(cleanedPlayerID)){
+            throw new IllegalArgumentException("Player ID already exists: " + cleanedPlayerID);
+        }
+
+        this.playerID = cleanedPlayerID;
         this.name = name.trim();
         this.position = position.trim();
         this.jerseyNumber = jerseyNumber;
@@ -81,6 +89,9 @@ public class Player implements StatTrack {
         this.physicality = physicality;
         this.simAttack = simAttack;
         this.simDiscipline = simDiscipline;
+
+        // Remembers the ID after the player is constructed
+        registeredPlayerIDs.add(cleanedPlayerID); 
     }
 
     private static void validateRating (int rating, String attribute){
