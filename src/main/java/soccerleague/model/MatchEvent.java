@@ -1,5 +1,15 @@
 package main.java.soccerleague.model;
 
+/**
+ * Abstract parent for anything that happens during a match (goals, cards).
+ * Each subclass decides how it changes the match in applyEvent().
+ * Pratham Patel
+ */
+
+
+import java.util.Objects;
+import main.java.soccerleague.exceptions.InvalidMatchOperationException;
+
 public abstract class MatchEvent {
 
     public static final int MAX_MINUTE = 120;
@@ -7,13 +17,19 @@ public abstract class MatchEvent {
     private int minute;
     private Player player;
     private Team team;
-    private boolean reversed;
+    private boolean applied;
 
     public MatchEvent(int minute, Player player, Team team) {
+        if (player == null || team == null) {
+            throw new IllegalArgumentException("An event needs a player and a team");
+        }
+        if (minute < 0 || minute > MAX_MINUTE) {
+            throw new IllegalArgumentException("Minute must be between 0 and " + MAX_MINUTE);
+        }
         this.minute = minute;
         this.player = player;
         this.team = team;
-        this.reversed = false;
+        this.applied = false;
     }
 
     public abstract void applyEvent(Match match);
@@ -32,27 +48,41 @@ public abstract class MatchEvent {
         return team;
     }
 
-    public boolean isReversed() {
-        return reversed;
+    public boolean isApplied() {
+        return applied;
     }
 
-    protected void setReversed(boolean reversed) {
-        this.reversed = reversed;
+    protected void setApplied(boolean applied) {
+        this.applied = applied;
     }
 
     public boolean isValidMinute() {
         return minute >= 0 && minute <= MAX_MINUTE;
     }
 
+    public boolean isFirstHalf() {
+        return minute <= 45;
+    }
+
     public boolean occurredBefore(MatchEvent other) {
-        return false;
+        if (other == null) {
+            throw new IllegalArgumentException("Other event cannot be null");
+        }
+        return this.minute < other.minute;
     }
 
     public void changeMinute(int newMinute) {
+        if (applied) {
+            throw new InvalidMatchOperationException("Cannot change the minute after the event was added to a match");
+        }
+        if (newMinute < 0 || newMinute > MAX_MINUTE) {
+            throw new InvalidMatchOperationException("Minute must be between 0 and " + MAX_MINUTE);
+        }
+        this.minute = newMinute;
     }
 
     @Override
     public String toString() {
-        return minute + "' " + getEventType() + " - " + player;
+        return minute + "' " + getEventType() + " - " + player.getName() + " (" + team.getName() + ")";
     }
 }
