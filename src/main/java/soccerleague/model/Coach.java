@@ -2,6 +2,9 @@ package main.java.soccerleague.model;
 import java.util.ArrayList;
 
 public class Coach {
+    private static final int MAX_INSTANCES = 100;
+    private static int instanceCount = 0;
+
     private String name;
     private String formation;
     private ArrayList<Player> startingLineup;
@@ -13,9 +16,15 @@ public class Coach {
 
         validateFormation(formation);
 
+        if(instanceCount >= MAX_INSTANCES){
+            throw new IllegalStateException("Cannot create more than 100 coaches");
+        }
+
         this.name = name.trim();
         this.formation = formation.trim();
         this.startingLineup = new ArrayList<>();
+
+        instanceCount++;
     }
 
     // Receives the 11 players who are starting
@@ -56,6 +65,33 @@ public class Coach {
         startingLineup = newLineup;
     }    
 
+    // Checks the number of outfield players in the formation
+    private static void validateFormation(String formation) {
+        if (formation == null || formation.isBlank()) {
+            throw new IllegalArgumentException("Formation cannot be empty");
+        }
+
+        String cleanedFormation = formation.trim();
+
+        if (!cleanedFormation.matches("[1-9](-[1-9]){2,3}")) {
+            throw new IllegalArgumentException("Formation must use three or four positive numbers, "
+                    + "such as 4-3-3 or 4-2-3-1"
+            );
+        }
+
+        String[] positions = cleanedFormation.split("-");
+        int totalPlayers = 0;
+
+        for (String position : positions) {
+            totalPlayers += Integer.parseInt(position);
+        }
+
+        if (totalPlayers != 10) {
+            throw new IllegalArgumentException("Formation must total 10 outfield players"
+            );
+        }
+    }
+
     // Changes a selected starter before kickoff
     public void substitutePlayer(Player playerOut, Player playerIn) {
         if (playerOut == null || playerIn == null) {
@@ -87,5 +123,30 @@ public class Coach {
 
         // Reuse the lineup checks for duplicates and goalkeeper count
         selectStartingLineup(updatedLineup);
+    }
+
+    public void changeFormation(String newFormation){
+        validateFormation(newFormation);
+        formation = newFormation.trim();
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getFormation(){
+        return formation;
+    }
+
+    // Returns a copy so callers don't change the lineup
+    public ArrayList<Player> getStartingLineup(){
+        return new ArrayList<>(startingLineup);
+    }
+
+    @Override
+    public String toString() {
+        return "Coach{" + "name='" + name + '\''
+                + ", formation='" + formation + '\''
+                + ", startingLineupSize=" + startingLineup.size() + '}';
     }
 }
