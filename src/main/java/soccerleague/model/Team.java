@@ -2,8 +2,10 @@ package main.java.soccerleague.model;
 
 import main.java.soccerleague.interfaces.StatTrack;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Team implements StatTrack {
+    private static final HashSet<String> registeredTeamIDs = new HashSet<>();
     private String teamID;
     private String name;
     private String city;
@@ -21,11 +23,20 @@ public class Team implements StatTrack {
             throw new IllegalArgumentException("City cannot be empty");
         }
 
-        this.teamID = teamID;
+        String cleanedTeamID = teamID.trim();
+
+        // Prevents 2 teams having the same ID
+        if (registeredTeamIDs.contains(cleanedTeamID)){
+            throw new IllegalArgumentException( "Team ID already exists: " + cleanedTeamID);
+        }
+
+        this.teamID = cleanedTeamID;
         this.name = name;
         this.city = city;
         this.players = new ArrayList<>();
         this.coach = null;
+
+        registeredTeamIDs.add(cleanedTeamID);
     }
     // Adds a player to the team
     public void addPlayer(Player player) {
