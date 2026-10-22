@@ -1,28 +1,43 @@
 package main.java.soccerleague.model;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Coach {
     private static final int MAX_INSTANCES = 100;
     private static int instanceCount = 0;
+    private static final HashSet<String> registeredCoachIDs = new HashSet<>();
 
+    private String coachID;
     private String name;
     private String formation;
     private ArrayList<Player> startingLineup;
 
-    public Coach(String name, String formation) {
+    public Coach(String coachID, String name, String formation) {
+        if (coachID == null || coachID.isBlank()) {
+            throw new IllegalArgumentException("Coach ID cannot be empty");
+        }
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Coach name cannot be empty");
         }
 
         validateFormation(formation);
 
+        String cleanedCoachID = coachID.trim();
+
+    
+        if (registeredCoachIDs.contains(cleanedCoachID)){
+            throw new IllegalArgumentException("Coach ID already exists: " + cleanedCoachID);
+        }
+
         if(instanceCount >= MAX_INSTANCES){
             throw new IllegalStateException("Cannot create more than 100 coaches");
         }
 
+        this.coachID = cleanedCoachID;
         this.name = name.trim();
         this.formation = formation.trim();
         this.startingLineup = new ArrayList<>();
+        registeredCoachIDs.add(cleanedCoachID);
 
         instanceCount++;
     }
@@ -137,6 +152,10 @@ public class Coach {
     public String getFormation(){
         return formation;
     }
+    
+    public String getCoachID() {
+        return coachID;
+    }
 
     // Returns a copy so callers don't change the lineup
     public ArrayList<Player> getStartingLineup(){
@@ -145,8 +164,9 @@ public class Coach {
 
     @Override
     public String toString() {
-        return "Coach{" + "name='" + name + '\''
-                + ", formation='" + formation + '\''
-                + ", startingLineupSize=" + startingLineup.size() + '}';
+        return "Coach{" + "coachID=" + coachID + '\''
+        + ", name='" + name + '\''
+        + ", formation='" + formation + '\''
+        + ", startingLineupSize=" + startingLineup.size() + '}';
     }
 }
