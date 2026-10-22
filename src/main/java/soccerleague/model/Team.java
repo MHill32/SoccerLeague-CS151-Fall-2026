@@ -29,10 +29,13 @@ public class Team implements StatTrack {
         if (registeredTeamIDs.contains(cleanedTeamID)){
             throw new IllegalArgumentException( "Team ID already exists: " + cleanedTeamID);
         }
+        if (registeredTeamIDs.size() >= 100) {
+            throw new IllegalStateException("Cannot create more than 100 teams");
+        }
 
         this.teamID = cleanedTeamID;
-        this.name = name;
-        this.city = city;
+        this.name = name.trim();
+        this.city = city.trim();
         this.players = new ArrayList<>();
         this.coach = null;
 

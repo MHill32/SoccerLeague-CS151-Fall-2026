@@ -65,11 +65,18 @@ public class Player implements StatTrack {
         validateRating(simDiscipline, "Simulation discipline");
 
         String cleanedPlayerID = playerID.trim();
+        
         // Prevents 2 players having the same ID
         if(registeredPlayerIDs.contains(cleanedPlayerID)){
             throw new IllegalArgumentException("Player ID already exists: " + cleanedPlayerID);
         }
 
+        // Prevents creating more than 100 players across the program.
+        if (registeredPlayerIDs.size() >= 100) {
+            throw new IllegalStateException("Cannot create more than 100 players");
+        }
+
+    
         this.playerID = cleanedPlayerID;
         this.name = name.trim();
         this.position = position.trim();
