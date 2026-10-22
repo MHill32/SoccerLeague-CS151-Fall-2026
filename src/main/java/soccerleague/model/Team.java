@@ -150,7 +150,7 @@ public class Team implements StatTrack {
     }
 
     // Average defense of all players on team's roster
-        public double calculateDefRating() {
+        public double calculateDefenseRating() {
         if(players.isEmpty()){
             return 0.0;
         }
