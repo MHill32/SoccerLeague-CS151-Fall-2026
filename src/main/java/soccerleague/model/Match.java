@@ -63,7 +63,7 @@ public class Match {
     }
 
     //Add Event during match
-    public void addEvent(MatchEvent event) {
+    public void addEvent(MatchEvent event) throws InvalidMatchOperationException {
         if (!started || completed) {
             throw new IllegalStateException("Events can only be added to started matches");
         }
