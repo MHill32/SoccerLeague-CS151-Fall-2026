@@ -32,7 +32,7 @@ public abstract class MatchEvent {
         this.applied = false;
     }
 
-    public abstract void applyEvent(Match match);
+    public abstract void applyEvent(Match match) throws InvalidMatchOperationException;
 
     public abstract String getEventType();
 
@@ -71,7 +71,7 @@ public abstract class MatchEvent {
         return this.minute < other.minute;
     }
 
-    public void changeMinute(int newMinute) {
+    public void changeMinute(int newMinute) throws InvalidMatchOperationException {
         if (applied) {
             throw new InvalidMatchOperationException("Cannot change the minute after the event was added to a match");
         }
@@ -81,7 +81,7 @@ public abstract class MatchEvent {
         this.minute = newMinute;
     }
 
-    protected void validateParticipant(Match match) {
+    protected void validateParticipant(Match match) throws InvalidMatchOperationException {
         if (match == null) {
             throw new InvalidMatchOperationException("Match cannot be null");
         }

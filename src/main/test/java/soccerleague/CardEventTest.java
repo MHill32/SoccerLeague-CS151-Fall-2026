@@ -25,7 +25,7 @@ public class CardEventTest {
     }
 
     @Test
-    public void testYellowCardUpdatesPlayer() {
+    public void testYellowCardUpdatesPlayer() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player player = newPlayer("Kai");
@@ -37,10 +37,11 @@ public class CardEventTest {
 
         assertEquals(1, player.getYellowCards());
         assertEquals(0, player.getRedCards());
+        assertEquals(1, home.getYellowCards());
     }
 
     @Test
-    public void testSecondYellowSendsOff() {
+    public void testSecondYellowSendsOff() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player player = newPlayer("Kai");
@@ -56,10 +57,12 @@ public class CardEventTest {
         assertTrue(second.isSendingOff());
         assertEquals(2, player.getYellowCards());
         assertEquals(1, player.getRedCards());
+        assertEquals(2, home.getYellowCards());
+        assertEquals(1, home.getRedCards());
     }
 
     @Test
-    public void testNoCardAfterSentOff() {
+    public void testNoCardAfterSentOff() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player player = newPlayer("Kai");
@@ -75,7 +78,7 @@ public class CardEventTest {
     }
 
     @Test
-    public void testSentOffPlayerCannotScore() {
+    public void testSentOffPlayerCannotScore() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player player = newPlayer("Kai");
@@ -92,7 +95,7 @@ public class CardEventTest {
     }
 
     @Test
-    public void testInvalidCardTypeAndReason() {
+    public void testInvalidCardTypeAndReason() throws Exception {
         Team home = newTeam("Sharks");
         Player player = newPlayer("Kai");
 
@@ -101,7 +104,7 @@ public class CardEventTest {
     }
 
     @Test
-    public void testDuplicateEventIsBlocked() {
+    public void testDuplicateEventIsBlocked() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player player = newPlayer("Kai");

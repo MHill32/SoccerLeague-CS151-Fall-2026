@@ -38,7 +38,7 @@ public class CardEvent extends MatchEvent {
         return secondYellow;
     }
 
-    public void validatePlayer(Match match) {
+    public void validatePlayer(Match match) throws InvalidMatchOperationException {
         validateParticipant(match);
         if (isSentOff(match, getPlayer())) {
             throw new InvalidMatchOperationException(getPlayer().getName() + " was already sent off in this match");
@@ -61,21 +61,24 @@ public class CardEvent extends MatchEvent {
     }
 
         @Override
-    public void applyEvent(Match match) {
+    public void applyEvent(Match match) throws InvalidMatchOperationException {
         validatePlayer(match);
 
         if (cardType.equals("YELLOW") && countYellowsInMatch(match) >= 1) {
             secondYellow = true;
         }
         getPlayer().receiveCard(cardType);
+        getTeam().recordCard(cardType);
         if (secondYellow) {
             getPlayer().receiveCard("RED");
+            getTeam().recordCard("RED");
         }
         setApplied(true);
     }
 
     @Override
     public String getEventType() {
+
         if (secondYellow) {
             return "SECOND YELLOW (RED CARD)";
         }
