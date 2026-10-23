@@ -21,7 +21,7 @@ public class League {
     private static final int MAX_INSTANCES = 100;
 
     //League Constructor
-    public League(String leagueID, String leagueName) {
+    public League(String leagueId, String leagueName) {
         if (leagueId == null || leagueId.isBlank()) {
             throw new IllegalArgumentException("League ID cannot be blank");
         }
@@ -30,7 +30,7 @@ public class League {
             throw new IllegalArgumentException("League name cannot be blank");
         }
         
-        this.leagueId = leagueID;
+        this.leagueId = leagueId;
         this.leagueName = leagueName;
         
         this.teams = new ArrayList<>();
@@ -45,8 +45,8 @@ public class League {
             throw new IllegalArgumentException("Team cannot be null");
         }
 
-        for (Team existingTeam : teams) {
-            if (existingTeam.getTeamID().equals(team.getTeamID())) {
+        for (Team existing : teams) {
+            if (existing.getTeamID().equals(team.getTeamID())) {
                 throw new IllegalArgumentException("Team already in league");
             }
         }
@@ -125,13 +125,13 @@ public class League {
             int awayScore = match.getAwayScore();
 
             if (homeScore > awayScore) {
-                homeStanding.recordWin(awayScore, homeScore);
+                homeStanding.recordWin(homeScore, awayScore);
                 awayStanding.recordLoss(awayScore, homeScore);
             } else if (homeScore < awayScore) {
                 awayStanding.recordWin(awayScore, homeScore);
-                homeStanding.recordLoss(awayScore, homeScore);
+                homeStanding.recordLoss(homeScore, awayScore);
             } else {
-                homeStanding.recordDraw(awayScore, homeScore);
+                homeStanding.recordDraw(homeScore, awayScore);
                 awayStanding.recordDraw(awayScore, homeScore);
             }
 
