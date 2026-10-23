@@ -60,8 +60,18 @@ public class CardEvent extends MatchEvent {
         return cardType.equals("RED") || secondYellow;
     }
 
-    @Override
+        @Override
     public void applyEvent(Match match) {
+        validatePlayer(match);
+
+        if (cardType.equals("YELLOW") && countYellowsInMatch(match) >= 1) {
+            secondYellow = true;
+        }
+        getPlayer().receiveCard(cardType);
+        if (secondYellow) {
+            getPlayer().receiveCard("RED");
+        }
+        setApplied(true);
     }
 
     @Override
