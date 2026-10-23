@@ -1,5 +1,12 @@
 package main.java.soccerleague.model;
 
+/**
+ * A yellow or red card given during a match.
+ * Pratham Patel
+ */
+
+import main.java.soccerleague.exceptions.InvalidMatchOperationException;
+
 public class CardEvent extends MatchEvent {
 
     private String cardType;
@@ -8,8 +15,14 @@ public class CardEvent extends MatchEvent {
 
     public CardEvent(int minute, Player player, Team team, String cardType, String reason) {
         super(minute, player, team);
-        this.cardType = cardType;
-        this.reason = reason;
+        if (cardType == null || !(cardType.trim().equalsIgnoreCase("YELLOW") || cardType.trim().equalsIgnoreCase("RED"))) {
+            throw new IllegalArgumentException("Card type must be YELLOW or RED");
+        }
+        if (reason == null || reason.isBlank()) {
+            throw new IllegalArgumentException("A card needs a reason");
+        }
+        this.cardType = cardType.trim().toUpperCase();
+        this.reason = reason.trim();
         this.secondYellow = false;
     }
 
@@ -25,15 +38,26 @@ public class CardEvent extends MatchEvent {
         return secondYellow;
     }
 
-    public boolean validatePlayer(Match match) {
-        return true;
+    public void validatePlayer(Match match) {
+        validateParticipant(match);
+        if (isSentOff(match, getPlayer())) {
+            throw new InvalidMatchOperationException(getPlayer().getName() + " was already sent off in this match");
+        }
+    }
+
+    public int countYellowsInMatch(Match match) {
+        int count = 0;
+        for (MatchEvent event : match.getEvents()) {
+            if (event instanceof CardEvent && event.getPlayer() == getPlayer()
+                    && ((CardEvent) event).getCardType().equals("YELLOW")) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public boolean isSendingOff() {
         return cardType.equals("RED") || secondYellow;
-    }
-
-    public void reverseCard() {
     }
 
     @Override
@@ -42,6 +66,9 @@ public class CardEvent extends MatchEvent {
 
     @Override
     public String getEventType() {
+        if (secondYellow) {
+            return "SECOND YELLOW (RED CARD)";
+        }
         return cardType + " CARD";
     }
 
