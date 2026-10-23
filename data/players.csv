@@ -1,0 +1,97 @@
+Team,Player,Position,OVR,PAC,SHO,PAS,DRI,DEF,PHY,SimAttack,SimDiscipline,PlayerID,JerseyNumber,Age
+Paris Saint-Germain,Matvey Safonov,GK,79,46,39,67,41,40,74,47,53,P0101,1,19
+Paris Saint-Germain,Nuno Mendes,LB,79,75,55,63,64,81,72,62,61,P0102,2,20
+Paris Saint-Germain,Willian Pacho,CB,83,90,48,67,73,86,85,64,79,P0103,3,34
+Paris Saint-Germain,Marquinhos,CB,82,73,50,63,74,86,78,62,66,P0104,4,26
+Paris Saint-Germain,Achraf Hakimi,RB,87,94,55,68,76,84,86,68,53,P0105,5,33
+Paris Saint-Germain,Lucas Beraldo,CDM,82,81,77,88,79,73,82,81,61,P0106,6,18
+Paris Saint-Germain,Vitinha,CM,78,84,62,75,82,64,78,73,65,P0107,7,26
+Paris Saint-Germain,Maghnes Akliouche,CAM,82,88,69,82,81,64,81,78,67,P0108,8,27
+Paris Saint-Germain,Khvicha Kvaratskhelia,LW,84,78,92,86,87,45,69,88,56,P0109,9,23
+Paris Saint-Germain,Ousmane Dembélé,ST,77,77,85,74,78,40,68,80,54,P0110,10,23
+Paris Saint-Germain,Désiré Doué,RW,82,86,82,85,91,39,75,85,49,P0111,11,30
+Paris Saint-Germain,Ferran Torres,ST,84,77,87,75,79,54,78,81,67,P0112,12,27
+Liverpool,Alisson,GK,76,47,42,62,44,47,72,48,51,P0201,1,29
+Liverpool,Milos Kerkez,LB,80,70,48,69,71,76,82,62,66,P0202,2,33
+Liverpool,Virgil van Dijk,CB,76,66,42,72,67,74,80,59,78,P0203,3,28
+Liverpool,Ronald Araujo,CB,83,87,44,75,74,85,86,64,68,P0204,4,32
+Liverpool,Conor Bradley,RB,79,81,45,61,65,82,86,58,58,P0205,5,32
+Liverpool,Ryan Gravenberch,CDM,88,83,85,91,92,89,78,88,63,P0206,6,21
+Liverpool,Alexis Mac Allister,CM,78,76,61,75,81,60,73,71,58,P0207,7,25
+Liverpool,Dominik Szoboszlai,CAM,88,84,78,92,92,89,82,86,74,P0208,8,28
+Liverpool,Florian Wirtz,LW,86,81,82,75,92,56,69,83,57,P0209,9,20
+Liverpool,Alexander Isak,ST,83,79,79,71,83,44,80,78,58,P0210,10,23
+Liverpool,Jeremie Frimpong,RW,83,88,81,85,83,42,69,83,56,P0211,11,27
+Liverpool,Hugo Ekitiké,ST,85,95,87,75,86,42,78,85,51,P0212,12,25
+Inter Milan,Ivan Provedel,GK,72,41,36,67,44,46,85,46,61,P0301,1,29
+Inter Milan,Federico Dimarco,LB,69,62,39,65,58,69,74,53,73,P0302,2,22
+Inter Milan,Alessandro Bastoni,CB,79,76,40,73,73,75,83,61,69,P0303,3,33
+Inter Milan,Manuel Akanji,CB,78,77,41,73,69,81,82,60,82,P0304,4,29
+Inter Milan,Luis Henrique,RB,70,60,35,61,62,76,65,51,71,P0305,5,21
+Inter Milan,Hakan Çalhanoğlu,CDM,71,68,60,68,78,57,62,67,79,P0306,6,21
+Inter Milan,Nicolò Barella,CM,68,68,66,64,62,56,68,65,68,P0307,7,23
+Inter Milan,Piotr Zieliński,CAM,74,74,55,78,75,67,68,68,55,P0308,8,33
+Inter Milan,Carlos Augusto,LW,69,67,65,68,66,35,59,66,49,P0309,9,29
+Inter Milan,Lautaro Martínez,ST,80,81,83,74,75,45,67,79,56,P0310,10,32
+Inter Milan,Djed Spence,RW,68,62,68,70,77,35,52,70,46,P0311,11,32
+Inter Milan,Marcus Thuram,ST,76,75,82,77,82,38,70,80,57,P0312,12,22
+Real Madrid,Thibaut Courtois,GK,80,43,40,61,47,47,75,47,73,P0401,1,33
+Real Madrid,Cucurella,LB,72,67,46,64,55,67,69,55,70,P0402,2,31
+Real Madrid,Ibrahima Konaté,CB,74,80,40,66,62,76,72,57,77,P0403,3,23
+Real Madrid,Éder Militão,CB,79,71,47,65,69,77,86,60,75,P0404,4,22
+Real Madrid,Trent Alexander-Arnold,RB,76,77,39,63,67,82,78,57,52,P0405,5,26
+Real Madrid,Aurélien Tchouaméni,CDM,82,77,79,90,79,74,77,82,59,P0406,6,19
+Real Madrid,Federico Valverde,CM,75,73,61,79,69,69,63,69,70,P0407,7,22
+Real Madrid,Jude Bellingham,CAM,76,81,57,84,74,65,79,71,72,P0408,8,27
+Real Madrid,Vini Jr.,LW,80,88,89,82,88,46,67,87,69,P0409,9,27
+Real Madrid,Kylian Mbappé,ST,72,80,78,75,75,35,70,77,70,P0410,10,33
+Real Madrid,Yan Diomande,RW,86,79,81,76,90,44,74,82,57,P0411,11,32
+Real Madrid,Endrick,ST,87,83,94,86,92,54,71,90,68,P0412,12,19
+Barcelona,Joan García,GK,89,40,36,54,40,35,67,42,64,P0501,1,22
+Barcelona,João Cancelo,LB,91,84,58,71,76,95,97,69,70,P0502,2,20
+Barcelona,Pau Cubarsí,CB,85,79,56,74,75,84,82,68,82,P0503,3,33
+Barcelona,Eric García,CB,92,94,57,88,81,95,91,75,63,P0504,4,24
+Barcelona,Jules Koundé,RB,86,80,57,67,79,91,78,68,50,P0505,5,29
+Barcelona,Rodri,CDM,88,88,86,91,94,84,91,89,80,P0506,6,29
+Barcelona,Pedri,CM,77,82,62,74,77,74,75,71,68,P0507,7,18
+Barcelona,Fermín,CAM,85,77,82,85,80,81,74,82,70,P0508,8,20
+Barcelona,Raphinha,LW,84,91,80,83,82,43,83,83,51,P0509,9,33
+Barcelona,Hamza Abdelkarim,ST,83,80,83,80,85,52,81,82,63,P0510,10,34
+Barcelona,Lamine Yamal,RW,83,80,88,78,78,45,68,82,59,P0511,11,25
+Barcelona,Anthony Gordon,ST,92,94,94,93,91,56,76,93,69,P0512,12,21
+Manchester City,Gianluigi Donnarumma,GK,80,36,36,65,40,45,67,44,61,P0601,1,33
+Manchester City,Nico O'Reilly,LB,86,93,50,81,70,82,82,68,69,P0602,2,21
+Manchester City,Rúben Dias,CB,78,83,44,74,63,81,79,61,64,P0603,3,21
+Manchester City,Marc Guéhi,CB,84,88,51,69,70,85,80,65,66,P0604,4,30
+Manchester City,Matheus Nunes,RB,76,71,46,71,67,77,80,60,69,P0605,5,19
+Manchester City,Elliot Anderson,CDM,90,88,84,98,94,90,82,90,61,P0606,6,32
+Manchester City,Mateo Kovačić,CM,88,87,79,88,87,89,84,84,55,P0607,7,33
+Manchester City,Phil Foden,CAM,82,76,78,79,88,77,81,81,52,P0608,8,24
+Manchester City,Jérémy Doku,LW,90,83,96,82,90,58,78,89,52,P0609,9,32
+Manchester City,Erling Haaland,ST,87,95,87,81,82,47,78,85,73,P0610,10,31
+Manchester City,Rayan Cherki,RW,77,71,82,72,77,38,75,77,58,P0611,11,20
+Manchester City,Omar Marmoush,ST,82,85,89,76,86,42,73,85,48,P0612,12,20
+Bayern Munich,Manuel Neuer,GK,74,37,38,56,47,39,79,45,57,P0701,1,26
+Bayern Munich,Alphonso Davies,LB,78,84,44,69,61,76,71,59,53,P0702,2,24
+Bayern Munich,Jonathan Tah,CB,84,89,55,67,66,80,84,65,67,P0703,3,26
+Bayern Munich,Dayot Upamecano,CB,80,72,46,69,66,79,83,60,65,P0704,4,25
+Bayern Munich,Konrad Laimer,RB,84,89,50,64,65,83,87,62,51,P0705,5,27
+Bayern Munich,Joshua Kimmich,CDM,83,88,65,80,82,84,84,76,58,P0706,6,23
+Bayern Munich,Tom Bischof,CM,77,73,66,82,74,72,67,73,65,P0707,7,27
+Bayern Munich,Serge Gnabry,CAM,79,79,67,87,85,62,78,78,68,P0708,8,32
+Bayern Munich,Jamal Musiala,LW,80,86,77,83,77,38,69,80,57,P0709,9,34
+Bayern Munich,Harry Kane,ST,72,75,70,66,80,41,59,72,51,P0710,10,20
+Bayern Munich,Michael Olise,RW,74,74,80,67,71,37,62,74,60,P0711,11,28
+Bayern Munich,Luis Díaz,ST,75,78,79,74,82,35,59,78,70,P0712,12,33
+Arsenal,David Raya,GK,85,44,35,58,42,49,77,44,57,P0801,1,21
+Arsenal,Piero Hincapié,LB,84,82,60,66,70,85,90,67,74,P0802,2,22
+Arsenal,Gabriel,CB,91,82,54,87,85,93,91,73,61,P0803,3,21
+Arsenal,William Saliba,CB,85,85,60,68,65,87,85,66,77,P0804,4,22
+Arsenal,Jurriën Timber,RB,77,68,48,67,68,77,82,60,50,P0805,5,20
+Arsenal,Declan Rice,CDM,77,81,70,84,73,72,70,76,73,P0806,6,20
+Arsenal,Martin Ødegaard,CM,85,89,75,92,88,86,76,84,50,P0807,7,18
+Arsenal,Eberechi Eze,CAM,84,77,72,92,82,76,87,80,69,P0808,8,23
+Arsenal,Christos Tzolis,LW,79,77,82,76,81,36,69,80,56,P0809,9,26
+Arsenal,Viktor Gyökeres,ST,91,89,94,90,96,60,86,93,65,P0810,10,23
+Arsenal,Bukayo Saka,RW,89,86,93,89,98,58,86,92,53,P0811,11,26
+Arsenal,Kai Havertz,ST,81,88,80,82,84,37,71,82,55,P0812,12,28
