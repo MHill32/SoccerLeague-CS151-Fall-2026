@@ -14,6 +14,11 @@ public class Team implements StatTrack {
     private Coach coach;
     private static final HashMap<String, Team> playerTeams = new HashMap<>();
 
+    private int goals;
+    private int assists;
+    private int yellowCards;
+    private int redCards;
+    
     public Team(String teamID, String name, String city) {
         if (teamID == null || teamID.isBlank()){
             throw new IllegalArgumentException("Team ID cannot be empty");
@@ -184,6 +189,33 @@ public class Team implements StatTrack {
         return total / players.size();
     }
 
+    // Records a goal scored for this team
+    public void recordGoal() {
+        goals++;
+    }
+
+    // Records an assist made for this team
+    public void recordAssist() {
+        assists++;
+    }
+
+    // Records a card received while playing for this team.
+    public void recordCard(String cardType) {
+    if (cardType == null || cardType.isBlank()) {
+        throw new IllegalArgumentException("Card type cannot be empty");
+    }
+
+    String cleanedCardType = cardType.trim();
+
+    if (cleanedCardType.equalsIgnoreCase("yellow")) {
+        yellowCards++;
+    } else if (cleanedCardType.equalsIgnoreCase("red")) {
+        redCards++;
+    } else {
+        throw new IllegalArgumentException("Invalid card type");
+    }
+}
+
     @Override 
     public String toString() {
         return "Team{"
@@ -192,7 +224,30 @@ public class Team implements StatTrack {
         + ", city='" + city + '\''
         + ", rosterSize=" + players.size()
         + ", hasCoach=" + (coach != null)
-        + '}';
+        + '}'
+        + ", goals=" + goals
+        + ", assists=" + assists
+        + ", yellowCards=" + yellowCards
+        + ", redCards=" + redCards;
     }
 
+    @Override
+    public int getGoals() {
+        return goals;
+    }
+
+    @Override
+    public int getAssists() {
+        return assists;
+    }
+
+    @Override
+    public int getYellowCards() {
+        return yellowCards;
+    }
+
+    @Override
+    public int getRedCards() {
+        return redCards;
+    }
 }
