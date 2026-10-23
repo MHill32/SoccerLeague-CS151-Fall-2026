@@ -5,6 +5,10 @@ package main.java.soccerleague.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import main.java.soccerleague.exceptions.DuplicateObjectException;
+import main.java.soccerleague.exceptions.MaximumInstancesException;
+
 import java.util.HashSet;
 import java.util.Comparator;
 
@@ -40,19 +44,19 @@ public class League {
     }
     
     //Adds a team into the league
-    public void promoteTeam(Team team) {
+    public void promoteTeam(Team team) throws DuplicateObjectException, MaximumInstancesException {
         if (team == null) {
             throw new IllegalArgumentException("Team cannot be null");
         }
 
         for (Team existing : teams) {
             if (existing.getTeamID().equals(team.getTeamID())) {
-                throw new IllegalArgumentException("Team already in league");
+                throw new DuplicateObjectException("Team already in league");
             }
         }
 
         if (teams.size() >= MAX_INSTANCES) {
-            throw new IllegalStateException("Maximum number of teams reached");
+            throw new MaximumInstancesException("Maximum number of teams reached");
         }
 
         teams.add(team);

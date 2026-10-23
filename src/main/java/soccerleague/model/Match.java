@@ -6,6 +6,8 @@ package main.java.soccerleague.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.soccerleague.exceptions.InvalidMatchOperationException;
+
 public class Match {
     private String matchId;
 
@@ -88,9 +90,9 @@ public class Match {
     }
 
     //Update the score for teams in match
-    public void recordGoal(Team scoringTeam) {
+    public void recordGoal(Team scoringTeam) throws InvalidMatchOperationException {
         if (!started || completed) {
-            throw new IllegalStateException("Goals can only be recorded during active matches");
+            throw new InvalidMatchOperationException("Goals can only be recorded during active matches");
         }
 
         if (scoringTeam == homeTeam) {

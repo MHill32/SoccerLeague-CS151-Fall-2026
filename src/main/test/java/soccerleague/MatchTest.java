@@ -3,6 +3,7 @@ package main.test.java.soccerleague;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import main.java.soccerleague.exceptions.InvalidMatchOperationException;
 import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Team;
 
@@ -20,7 +21,7 @@ public class MatchTest {
     }
 
     @Test
-    public void testRecordGoals() {
+    public void testRecordGoals() throws Exception {
         Team homeTeam = new Team("T03", "Chelsea", "London");
         Team awayTeam = new Team("T04", "Fulham", "Fulham");
 
@@ -48,7 +49,7 @@ public class MatchTest {
     }
 
     @Test
-    public void testDetermineWinner() {
+    public void testDetermineWinner() throws Exception {
         Team homeTeam = new Team("T07", "Reds", "Liverpool");
         Team awayTeam = new Team("T08", "Hull City", "Hull");
 
@@ -63,13 +64,13 @@ public class MatchTest {
     }
 
     @Test
-    public void testGoalBeforeStart() {
+    public void testGoalBeforeStart() throws Exception {
         Team homeTeam = new Team("T09", "Ipswich Town", "Ipswich");
         Team awayTeam = new Team("T10", "Leeds United", "Leeds");
 
         Match match = new Match("M05", homeTeam, awayTeam);
 
-        assertThrows(IllegalStateException.class, () -> {
+        assertThrows(InvalidMatchOperationException.class, () -> {
             match.recordGoal(homeTeam);
         });
 

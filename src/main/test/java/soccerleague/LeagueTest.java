@@ -3,13 +3,14 @@ package main.test.java.soccerleague;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import main.java.soccerleague.exceptions.DuplicateObjectException;
 import main.java.soccerleague.model.League;
 import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Team;
 
 public class LeagueTest {
     @Test 
-    public void testPromoteTeam() {
+    public void testPromoteTeam() throws Exception {
         League league = new League("L01", "Premier League");
         Team team = new Team("T01", "Reds", "Liverpool");
         
@@ -21,12 +22,12 @@ public class LeagueTest {
     }
 
     @Test 
-    public void testDuplicateTeam() {
+    public void testDuplicateTeam() throws Exception {
         League league = new League("L02", "Premier League");
         Team team = new Team("T02", "Manchester City", "Manchester");
         league.promoteTeam(team);
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(DuplicateObjectException.class, () -> {
             league.promoteTeam(team);
         });
 
@@ -34,7 +35,7 @@ public class LeagueTest {
     }
 
     @Test
-    public void testScheduleMatch() {
+    public void testScheduleMatch() throws Exception {
         League league = new League("L03", "Premier League");
         Team homeTeam = new Team("T04", "Chelsea", "London");
         Team awayTeam = new Team("T05", "Fulham", "Fulham");
@@ -50,7 +51,7 @@ public class LeagueTest {
     }
 
     @Test
-    public void testUpdateStandings() {
+    public void testUpdateStandings() throws Exception {
         League league = new League("L04", "Premier League");
         Team homeTeam = new Team("T06", "Spurs", "Tottenham");
         Team awayTeam = new Team("T07", "Hull City", "Hull");
@@ -75,7 +76,7 @@ public class LeagueTest {
     }
 
     @Test
-    public void testNoDuplicateStandingsUpdate() {
+    public void testNoDuplicateStandingsUpdate() throws Exception {
         League league = new League("L05", "Premier League");
         Team homeTeam = new Team("T08", "Arsenal", "London");
         Team awayTeam = new Team("T09", "Ipswich Town", "Ipswich");
