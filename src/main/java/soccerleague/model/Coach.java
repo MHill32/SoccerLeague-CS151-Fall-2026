@@ -51,12 +51,24 @@ public class Coach {
             throw new IllegalArgumentException("Starting lineup must contain exactly 11 players");
         }
 
+        Team team = Team.getTeamForCoach(this);
+        if (team == null) {
+            throw new IllegalStateException("Coach must be assigned to a team first");
+        }
+
+        ArrayList<Player> roster = team.getPlayers();
         ArrayList<Player> newLineup = new ArrayList<>();
         int goalkeeperCount = 0;
 
         for (Player player : players) {
             if (player == null) {
                 throw new IllegalArgumentException("Starting lineup cannot contain null players");
+            }
+
+            if (!roster.contains(player)) {
+                throw new IllegalArgumentException(
+                        "Starting players must belong to the coach's team"
+                );
             }
 
             for (Player existingPlayer : newLineup) {
@@ -140,6 +152,18 @@ public class Coach {
         selectStartingLineup(updatedLineup);
     }
 
+    // A departed starter invalidates the selected eleven.
+    void clearLineupIfStarting(Player player) {
+        if (startingLineup.contains(player)) {
+            clearStartingLineup();
+        }
+    }
+
+    // Team uses this when its coach leaves.
+    void clearStartingLineup() {
+        startingLineup.clear();
+    }
+
     public void changeFormation(String newFormation){
         validateFormation(newFormation);
         formation = newFormation.trim();
@@ -164,7 +188,7 @@ public class Coach {
 
     @Override
     public String toString() {
-        return "Coach{" + "coachID=" + coachID + '\''
+        return "Coach{" + "coachID='" + coachID + '\''
         + ", name='" + name + '\''
         + ", formation='" + formation + '\''
         + ", startingLineupSize=" + startingLineup.size() + '}';
