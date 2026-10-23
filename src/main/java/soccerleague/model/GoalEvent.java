@@ -77,10 +77,31 @@ public class GoalEvent extends MatchEvent {
         }
     }
 
-    @Override
-    public void applyEvent(Match match) {
+        public Team getBenefitingTeam(Match match) {
+        if (!isOwnGoal()) {
+            return getTeam();
+        }
+        if (getTeam() == match.getHomeTeam()) {
+            return match.getAwayTeam();
+        }
+        return match.getHomeTeam();
     }
 
+    @Override
+    public void applyEvent(Match match) {
+        validateScorer(match);
+        validateAssist(match);
+
+        match.recordGoal(getBenefitingTeam(match));
+        if (!isOwnGoal()) {
+            getPlayer().scoreGoal();
+        }
+        if (assistPlayer != null) {
+            assistPlayer.recordAssist();
+        }
+        setApplied(true);
+    }
+    
     @Override
     public String getEventType() {
         if (goalType.equals("REGULAR")) {
