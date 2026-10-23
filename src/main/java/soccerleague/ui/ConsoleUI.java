@@ -91,12 +91,7 @@ public class ConsoleUI {
     }
 
     for (Team team : league.getTeams()) {
-        System.out.printf(
-            "%s | %s | Players: %d%n",
-            team.getName(),
-            team.getCity(),
-            team.getRosterSize()
-            );
+        System.out.println(team); // uses toString()
         }
     }
     
@@ -106,24 +101,18 @@ public class ConsoleUI {
         System.out.println();
         System.out.println("===== LEAGUE STANDINGS =====");
 
+        if (league.getRankedStandings().isEmpty()){
+            System.out.println("No standings available.");
+            return;
+        }
+        
         System.out.printf(
-                "%-24s %3s %3s %3s %3s %4s %4s %4s %4s%n",
-                "Team", "P", "W", "D", "L", "GF", "GA", "GD", "PTS"
+            "%-21s %3s %3s %3s %3s %4s %4s %4s %4s%n",
+            "Team", "P", "W", "D", "L", "GF", "GA", "GD", "PTS"
         );
 
         for (Standing standing : league.getRankedStandings()) {
-            System.out.printf(
-                    "%-24s %3d %3d %3d %3d %4d %4d %4d %4d%n",
-                    standing.getTeam().getName(),
-                    standing.getMatchesPlayed(),
-                    standing.getWins(),
-                    standing.getDraws(),
-                    standing.getLosses(),
-                    standing.getGoalsFor(),
-                    standing.getGoalsAgainst(),
-                    standing.getGoalDifference(),
-                    standing.getPoints()
-            );
+            System.out.println(standing); // uses toString()
         }
 
         System.out.println();
