@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 import main.java.soccerleague.data.PlayerDataLoader;
+import main.java.soccerleague.exceptions.DuplicateObjectException;
+import main.java.soccerleague.exceptions.MaximumInstancesException;
 import main.java.soccerleague.model.League;
 import main.java.soccerleague.model.Team;
 import main.java.soccerleague.model.Standing;
@@ -21,7 +23,7 @@ public class ConsoleUI {
             }
             System.out.println("Loaded 8 teams and 96 players.");
 
-        } catch (IOException exception){
+        } catch (IOException | DuplicateObjectException | MaximumInstancesException exception){
             System.out.println("Could not load player data: " + exception.getMessage());
             return;
         }
