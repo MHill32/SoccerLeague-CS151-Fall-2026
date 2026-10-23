@@ -74,6 +74,9 @@ public class Team implements StatTrack {
         }
 
         playerTeams.remove(player.getPlayerID());
+        if (coach != null) {
+            coach.clearLineupIfStarting(player);
+        }
     }
 
     // Transfers a player to a new team
@@ -95,6 +98,9 @@ public class Team implements StatTrack {
         players.remove(player);
         newTeam.players.add(player);
         playerTeams.put(player.getPlayerID(), newTeam);
+        if (coach != null) {
+            coach.clearLineupIfStarting(player);
+        }
 
     }
     
@@ -123,8 +129,14 @@ public class Team implements StatTrack {
             throw new IllegalStateException("Team does not have a coach");
         }
 
+        coach.clearStartingLineup();
         coachTeams.remove(coach.getCoachID());
         coach = null;
+    }
+
+    // Lets Coach find its assigned team within this package.
+    static Team getTeamForCoach(Coach coach) {
+        return coachTeams.get(coach.getCoachID());
     }
 
     public String getTeamID() {
