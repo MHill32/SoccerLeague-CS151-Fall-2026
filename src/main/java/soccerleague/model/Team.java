@@ -13,6 +13,7 @@ public class Team implements StatTrack {
     private ArrayList<Player> players;
     private Coach coach;
     private static final HashMap<String, Team> playerTeams = new HashMap<>();
+    private static final HashMap<String, Team> coachTeams = new HashMap<>();
 
     private int goals;
     private int assists;
@@ -73,6 +74,9 @@ public class Team implements StatTrack {
         }
 
         playerTeams.remove(player.getPlayerID());
+        if (coach != null) {
+            coach.clearLineupIfStarting(player);
+        }
     }
 
     // Transfers a player to a new team
@@ -94,6 +98,9 @@ public class Team implements StatTrack {
         players.remove(player);
         newTeam.players.add(player);
         playerTeams.put(player.getPlayerID(), newTeam);
+        if (coach != null) {
+            coach.clearLineupIfStarting(player);
+        }
 
     }
     
@@ -107,8 +114,12 @@ public class Team implements StatTrack {
             throw new IllegalStateException("Team already has a coach");
         }
 
-        this.coach = coach;
+        if (coachTeams.containsKey(coach.getCoachID())) {
+            throw new IllegalStateException("Coach already belongs to a team");
+        }
 
+        this.coach = coach;
+        coachTeams.put(coach.getCoachID(), this);
     }
     
     // Removes the coach from the team
@@ -118,7 +129,14 @@ public class Team implements StatTrack {
             throw new IllegalStateException("Team does not have a coach");
         }
 
+        coach.clearStartingLineup();
+        coachTeams.remove(coach.getCoachID());
         coach = null;
+    }
+
+    // Lets Coach find its assigned team within this package.
+    static Team getTeamForCoach(Coach coach) {
+        return coachTeams.get(coach.getCoachID());
     }
 
     public String getTeamID() {

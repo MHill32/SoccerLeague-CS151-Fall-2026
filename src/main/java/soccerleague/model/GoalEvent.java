@@ -52,14 +52,14 @@ public class GoalEvent extends MatchEvent {
         return false;
     }
 
-    public void validateScorer(Match match) {
+    public void validateScorer(Match match) throws InvalidMatchOperationException {
         validateParticipant(match);
         if (isSentOff(match, getPlayer())) {
             throw new InvalidMatchOperationException(getPlayer().getName() + " was sent off and cannot score");
         }
     }
 
-    public void validateAssist(Match match) {
+    public void validateAssist(Match match) throws InvalidMatchOperationException {
         if (assistPlayer == null) {
             return;
         }
@@ -88,16 +88,19 @@ public class GoalEvent extends MatchEvent {
     }
 
     @Override
-    public void applyEvent(Match match) {
+    public void applyEvent(Match match) throws InvalidMatchOperationException {
         validateScorer(match);
         validateAssist(match);
 
-        match.recordGoal(getBenefitingTeam(match));
+        Team scoringTeam = getBenefitingTeam(match);
+        match.recordGoal(scoringTeam);
+        scoringTeam.recordGoal();
         if (!isOwnGoal()) {
             getPlayer().scoreGoal();
         }
         if (assistPlayer != null) {
             assistPlayer.recordAssist();
+            getTeam().recordAssist();
         }
         setApplied(true);
     }
