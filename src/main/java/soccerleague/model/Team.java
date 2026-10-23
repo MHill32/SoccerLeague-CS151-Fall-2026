@@ -236,17 +236,17 @@ public class Team implements StatTrack {
 
     @Override 
     public String toString() {
-        return "Team{"
-        + "teamID='" + teamID + '\''
-        + ", name='" + name + '\''
-        + ", city='" + city + '\''
-        + ", rosterSize=" + players.size()
-        + ", hasCoach=" + (coach != null)
-        + '}'
-        + ", goals=" + goals
-        + ", assists=" + assists
-        + ", yellowCards=" + yellowCards
-        + ", redCards=" + redCards;
+        return String.format(
+            "%-21s | %-10s | Players: %2d | Coach: %-3s | Goals: %3d | Assists: %3d | Yellow cards: %3d | Red cards: %3d",
+            name,
+            city,
+            players.size(),
+            coach == null ? "No" : "Yes",
+            goals,
+            assists,
+            yellowCards,
+            redCards
+        );
     }
 
     @Override
