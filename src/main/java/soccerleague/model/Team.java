@@ -3,6 +3,7 @@ package main.java.soccerleague.model;
 import main.java.soccerleague.interfaces.StatTrack;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.HashMap;
 
 public class Team implements StatTrack {
     private static final HashSet<String> registeredTeamIDs = new HashSet<>();
@@ -11,6 +12,7 @@ public class Team implements StatTrack {
     private String city;
     private ArrayList<Player> players;
     private Coach coach;
+    private static final HashMap<String, Team> playerTeams = new HashMap<>();
 
     public Team(String teamID, String name, String city) {
         if (teamID == null || teamID.isBlank()){
@@ -46,12 +48,13 @@ public class Team implements StatTrack {
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null");
         }
-        for (Player existingPlayer : players) {
-            if (existingPlayer == player) {
-                throw new IllegalArgumentException("Player already on team");
-            }
+        String playerID = player.getPlayerID();
+        
+        if (playerTeams.containsKey(playerID)) {
+            throw new IllegalArgumentException("Player already belongs to a team. Use transferPlayer instead");
         }
         players.add(player);
+        playerTeams.put(playerID, this);
     }
 
     // Remove a player from the team
@@ -63,6 +66,8 @@ public class Team implements StatTrack {
         if(!players.remove(player)){
             throw new IllegalArgumentException("Player not found on the team");
         }
+
+        playerTeams.remove(player.getPlayerID());
     }
 
     // Transfers a player to a new team
@@ -81,8 +86,10 @@ public class Team implements StatTrack {
             throw new IllegalArgumentException("Player not found on team");
         }
 
-        newTeam.addPlayer(player);
         players.remove(player);
+        newTeam.players.add(player);
+        playerTeams.put(player.getPlayerID(), newTeam);
+
     }
     
     // Adds a coach to the team
