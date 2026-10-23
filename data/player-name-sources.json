@@ -1,0 +1,866 @@
+[
+  {
+    "PlayerID": "P0101",
+    "Team": "Paris Saint-Germain",
+    "Position": "GK",
+    "Player": "Matvey Safonov",
+    "source_player_id": "240225",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0102",
+    "Team": "Paris Saint-Germain",
+    "Position": "LB",
+    "Player": "Nuno Mendes",
+    "source_player_id": "252145",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "LM"
+  },
+  {
+    "PlayerID": "P0103",
+    "Team": "Paris Saint-Germain",
+    "Position": "CB",
+    "Player": "Willian Pacho",
+    "source_player_id": "256196",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0104",
+    "Team": "Paris Saint-Germain",
+    "Position": "CB",
+    "Player": "Marquinhos",
+    "source_player_id": "207865",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0105",
+    "Team": "Paris Saint-Germain",
+    "Position": "RB",
+    "Player": "Achraf Hakimi",
+    "source_player_id": "235212",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0106",
+    "Team": "Paris Saint-Germain",
+    "Position": "CDM",
+    "Player": "Lucas Beraldo",
+    "source_player_id": "279709",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CB CM"
+  },
+  {
+    "PlayerID": "P0107",
+    "Team": "Paris Saint-Germain",
+    "Position": "CM",
+    "Player": "Vitinha",
+    "source_player_id": "255253",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM"
+  },
+  {
+    "PlayerID": "P0108",
+    "Team": "Paris Saint-Germain",
+    "Position": "CAM",
+    "Player": "Maghnes Akliouche",
+    "source_player_id": "264862",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "RM CM RW"
+  },
+  {
+    "PlayerID": "P0109",
+    "Team": "Paris Saint-Germain",
+    "Position": "LW",
+    "Player": "Khvicha Kvaratskhelia",
+    "source_player_id": "247635",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "RW LM RM"
+  },
+  {
+    "PlayerID": "P0110",
+    "Team": "Paris Saint-Germain",
+    "Position": "ST",
+    "Player": "Ousmane Dembélé",
+    "source_player_id": "231443",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "RW CAM RM"
+  },
+  {
+    "PlayerID": "P0111",
+    "Team": "Paris Saint-Germain",
+    "Position": "RW",
+    "Player": "Désiré Doué",
+    "source_player_id": "271421",
+    "source_primary_position": "RW",
+    "source_alternate_positions": "LW CM RM"
+  },
+  {
+    "PlayerID": "P0112",
+    "Team": "Paris Saint-Germain",
+    "Position": "ST",
+    "Player": "Ferran Torres",
+    "source_player_id": "241461",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "LW LM"
+  },
+  {
+    "PlayerID": "P0201",
+    "Team": "Liverpool",
+    "Position": "GK",
+    "Player": "Alisson",
+    "source_player_id": "212831",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0202",
+    "Team": "Liverpool",
+    "Position": "LB",
+    "Player": "Milos Kerkez",
+    "source_player_id": "260908",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "LM"
+  },
+  {
+    "PlayerID": "P0203",
+    "Team": "Liverpool",
+    "Position": "CB",
+    "Player": "Virgil van Dijk",
+    "source_player_id": "203376",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0204",
+    "Team": "Liverpool",
+    "Position": "CB",
+    "Player": "Ronald Araujo",
+    "source_player_id": "253163",
+    "source_primary_position": "CB",
+    "source_alternate_positions": "RB"
+  },
+  {
+    "PlayerID": "P0205",
+    "Team": "Liverpool",
+    "Position": "RB",
+    "Player": "Conor Bradley",
+    "source_player_id": "264298",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0206",
+    "Team": "Liverpool",
+    "Position": "CDM",
+    "Player": "Ryan Gravenberch",
+    "source_player_id": "246104",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0207",
+    "Team": "Liverpool",
+    "Position": "CM",
+    "Player": "Alexis Mac Allister",
+    "source_player_id": "239837",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM"
+  },
+  {
+    "PlayerID": "P0208",
+    "Team": "Liverpool",
+    "Position": "CAM",
+    "Player": "Dominik Szoboszlai",
+    "source_player_id": "236772",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "RB CDM CM"
+  },
+  {
+    "PlayerID": "P0209",
+    "Team": "Liverpool",
+    "Position": "LW",
+    "Player": "Florian Wirtz",
+    "source_player_id": "256630",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "LM CM LW"
+  },
+  {
+    "PlayerID": "P0210",
+    "Team": "Liverpool",
+    "Position": "ST",
+    "Player": "Alexander Isak",
+    "source_player_id": "233731",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0211",
+    "Team": "Liverpool",
+    "Position": "RW",
+    "Player": "Jeremie Frimpong",
+    "source_player_id": "253149",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "RM RW"
+  },
+  {
+    "PlayerID": "P0212",
+    "Team": "Liverpool",
+    "Position": "ST",
+    "Player": "Hugo Ekitiké",
+    "source_player_id": "257289",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "CAM"
+  },
+  {
+    "PlayerID": "P0301",
+    "Team": "Inter Milan",
+    "Position": "GK",
+    "Player": "Ivan Provedel",
+    "source_player_id": "224987",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0302",
+    "Team": "Inter Milan",
+    "Position": "LB",
+    "Player": "Federico Dimarco",
+    "source_player_id": "226268",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "LM"
+  },
+  {
+    "PlayerID": "P0303",
+    "Team": "Inter Milan",
+    "Position": "CB",
+    "Player": "Alessandro Bastoni",
+    "source_player_id": "237383",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0304",
+    "Team": "Inter Milan",
+    "Position": "CB",
+    "Player": "Manuel Akanji",
+    "source_player_id": "229237",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0305",
+    "Team": "Inter Milan",
+    "Position": "RB",
+    "Player": "Luis Henrique",
+    "source_player_id": "256632",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0306",
+    "Team": "Inter Milan",
+    "Position": "CDM",
+    "Player": "Hakan Çalhanoğlu",
+    "source_player_id": "208128",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0307",
+    "Team": "Inter Milan",
+    "Position": "CM",
+    "Player": "Nicolò Barella",
+    "source_player_id": "224232",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM"
+  },
+  {
+    "PlayerID": "P0308",
+    "Team": "Inter Milan",
+    "Position": "CAM",
+    "Player": "Piotr Zieliński",
+    "source_player_id": "210406",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM CAM"
+  },
+  {
+    "PlayerID": "P0309",
+    "Team": "Inter Milan",
+    "Position": "LW",
+    "Player": "Carlos Augusto",
+    "source_player_id": "258648",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "CB LM"
+  },
+  {
+    "PlayerID": "P0310",
+    "Team": "Inter Milan",
+    "Position": "ST",
+    "Player": "Lautaro Martínez",
+    "source_player_id": "231478",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0311",
+    "Team": "Inter Milan",
+    "Position": "RW",
+    "Player": "Djed Spence",
+    "source_player_id": "243702",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "RB"
+  },
+  {
+    "PlayerID": "P0312",
+    "Team": "Inter Milan",
+    "Position": "ST",
+    "Player": "Marcus Thuram",
+    "source_player_id": "228093",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0401",
+    "Team": "Real Madrid",
+    "Position": "GK",
+    "Player": "Thibaut Courtois",
+    "source_player_id": "192119",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0402",
+    "Team": "Real Madrid",
+    "Position": "LB",
+    "Player": "Cucurella",
+    "source_player_id": "239231",
+    "source_primary_position": "LB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0403",
+    "Team": "Real Madrid",
+    "Position": "CB",
+    "Player": "Ibrahima Konaté",
+    "source_player_id": "237678",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0404",
+    "Team": "Real Madrid",
+    "Position": "CB",
+    "Player": "Éder Militão",
+    "source_player_id": "240130",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0405",
+    "Team": "Real Madrid",
+    "Position": "RB",
+    "Player": "Trent Alexander-Arnold",
+    "source_player_id": "231281",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0406",
+    "Team": "Real Madrid",
+    "Position": "CDM",
+    "Player": "Aurélien Tchouaméni",
+    "source_player_id": "241637",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM CB"
+  },
+  {
+    "PlayerID": "P0407",
+    "Team": "Real Madrid",
+    "Position": "CM",
+    "Player": "Federico Valverde",
+    "source_player_id": "239053",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "RB RM CDM"
+  },
+  {
+    "PlayerID": "P0408",
+    "Team": "Real Madrid",
+    "Position": "CAM",
+    "Player": "Jude Bellingham",
+    "source_player_id": "252371",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "CM LM ST"
+  },
+  {
+    "PlayerID": "P0409",
+    "Team": "Real Madrid",
+    "Position": "LW",
+    "Player": "Vini Jr.",
+    "source_player_id": "238794",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "ST LM"
+  },
+  {
+    "PlayerID": "P0410",
+    "Team": "Real Madrid",
+    "Position": "ST",
+    "Player": "Kylian Mbappé",
+    "source_player_id": "231747",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "LW"
+  },
+  {
+    "PlayerID": "P0411",
+    "Team": "Real Madrid",
+    "Position": "RW",
+    "Player": "Yan Diomande",
+    "source_player_id": "78012",
+    "source_primary_position": "RW",
+    "source_alternate_positions": "LW RM LM"
+  },
+  {
+    "PlayerID": "P0412",
+    "Team": "Real Madrid",
+    "Position": "ST",
+    "Player": "Endrick",
+    "source_player_id": "272505",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "RW CAM RM"
+  },
+  {
+    "PlayerID": "P0501",
+    "Team": "Barcelona",
+    "Position": "GK",
+    "Player": "Joan García",
+    "source_player_id": "259532",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0502",
+    "Team": "Barcelona",
+    "Position": "LB",
+    "Player": "João Cancelo",
+    "source_player_id": "210514",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "RB RM LM"
+  },
+  {
+    "PlayerID": "P0503",
+    "Team": "Barcelona",
+    "Position": "CB",
+    "Player": "Pau Cubarsí",
+    "source_player_id": "278046",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0504",
+    "Team": "Barcelona",
+    "Position": "CB",
+    "Player": "Eric García",
+    "source_player_id": "245037",
+    "source_primary_position": "CB",
+    "source_alternate_positions": "RB CDM CM"
+  },
+  {
+    "PlayerID": "P0505",
+    "Team": "Barcelona",
+    "Position": "RB",
+    "Player": "Jules Koundé",
+    "source_player_id": "241486",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "CB RM"
+  },
+  {
+    "PlayerID": "P0506",
+    "Team": "Barcelona",
+    "Position": "CDM",
+    "Player": "Rodri",
+    "source_player_id": "231866",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0507",
+    "Team": "Barcelona",
+    "Position": "CM",
+    "Player": "Pedri",
+    "source_player_id": "251854",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM CAM"
+  },
+  {
+    "PlayerID": "P0508",
+    "Team": "Barcelona",
+    "Position": "CAM",
+    "Player": "Fermín",
+    "source_player_id": "277179",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "CM LM"
+  },
+  {
+    "PlayerID": "P0509",
+    "Team": "Barcelona",
+    "Position": "LW",
+    "Player": "Raphinha",
+    "source_player_id": "233419",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "RW CAM LM"
+  },
+  {
+    "PlayerID": "P0510",
+    "Team": "Barcelona",
+    "Position": "ST",
+    "Player": "Hamza Abdelkarim",
+    "source_player_id": "86106",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0511",
+    "Team": "Barcelona",
+    "Position": "RW",
+    "Player": "Lamine Yamal",
+    "source_player_id": "277643",
+    "source_primary_position": "RW",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0512",
+    "Team": "Barcelona",
+    "Position": "ST",
+    "Player": "Anthony Gordon",
+    "source_player_id": "242964",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "ST LM"
+  },
+  {
+    "PlayerID": "P0601",
+    "Team": "Manchester City",
+    "Position": "GK",
+    "Player": "Gianluigi Donnarumma",
+    "source_player_id": "230621",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0602",
+    "Team": "Manchester City",
+    "Position": "LB",
+    "Player": "Nico O'Reilly",
+    "source_player_id": "277427",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "CM CDM"
+  },
+  {
+    "PlayerID": "P0603",
+    "Team": "Manchester City",
+    "Position": "CB",
+    "Player": "Rúben Dias",
+    "source_player_id": "239818",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0604",
+    "Team": "Manchester City",
+    "Position": "CB",
+    "Player": "Marc Guéhi",
+    "source_player_id": "241159",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0605",
+    "Team": "Manchester City",
+    "Position": "RB",
+    "Player": "Matheus Nunes",
+    "source_player_id": "253124",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0606",
+    "Team": "Manchester City",
+    "Position": "CDM",
+    "Player": "Elliot Anderson",
+    "source_player_id": "254243",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0607",
+    "Team": "Manchester City",
+    "Position": "CM",
+    "Player": "Mateo Kovačić",
+    "source_player_id": "207410",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM CAM"
+  },
+  {
+    "PlayerID": "P0608",
+    "Team": "Manchester City",
+    "Position": "CAM",
+    "Player": "Phil Foden",
+    "source_player_id": "237692",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "CM RW RM"
+  },
+  {
+    "PlayerID": "P0609",
+    "Team": "Manchester City",
+    "Position": "LW",
+    "Player": "Jérémy Doku",
+    "source_player_id": "246420",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "LM RW RM"
+  },
+  {
+    "PlayerID": "P0610",
+    "Team": "Manchester City",
+    "Position": "ST",
+    "Player": "Erling Haaland",
+    "source_player_id": "239085",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0611",
+    "Team": "Manchester City",
+    "Position": "RW",
+    "Player": "Rayan Cherki",
+    "source_player_id": "251570",
+    "source_primary_position": "RW",
+    "source_alternate_positions": "RM CAM CM"
+  },
+  {
+    "PlayerID": "P0612",
+    "Team": "Manchester City",
+    "Position": "ST",
+    "Player": "Omar Marmoush",
+    "source_player_id": "256675",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "ST LM CAM"
+  },
+  {
+    "PlayerID": "P0701",
+    "Team": "Bayern Munich",
+    "Position": "GK",
+    "Player": "Manuel Neuer",
+    "source_player_id": "167495",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0702",
+    "Team": "Bayern Munich",
+    "Position": "LB",
+    "Player": "Alphonso Davies",
+    "source_player_id": "234396",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "LM"
+  },
+  {
+    "PlayerID": "P0703",
+    "Team": "Bayern Munich",
+    "Position": "CB",
+    "Player": "Jonathan Tah",
+    "source_player_id": "213331",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0704",
+    "Team": "Bayern Munich",
+    "Position": "CB",
+    "Player": "Dayot Upamecano",
+    "source_player_id": "229558",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0705",
+    "Team": "Bayern Munich",
+    "Position": "RB",
+    "Player": "Konrad Laimer",
+    "source_player_id": "225375",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "LB CDM RM"
+  },
+  {
+    "PlayerID": "P0706",
+    "Team": "Bayern Munich",
+    "Position": "CDM",
+    "Player": "Joshua Kimmich",
+    "source_player_id": "212622",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM RB"
+  },
+  {
+    "PlayerID": "P0707",
+    "Team": "Bayern Munich",
+    "Position": "CM",
+    "Player": "Tom Bischof",
+    "source_player_id": "263765",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CDM LB"
+  },
+  {
+    "PlayerID": "P0708",
+    "Team": "Bayern Munich",
+    "Position": "CAM",
+    "Player": "Serge Gnabry",
+    "source_player_id": "206113",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "LM ST LW"
+  },
+  {
+    "PlayerID": "P0709",
+    "Team": "Bayern Munich",
+    "Position": "LW",
+    "Player": "Jamal Musiala",
+    "source_player_id": "256790",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "LM LW"
+  },
+  {
+    "PlayerID": "P0710",
+    "Team": "Bayern Munich",
+    "Position": "ST",
+    "Player": "Harry Kane",
+    "source_player_id": "202126",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0711",
+    "Team": "Bayern Munich",
+    "Position": "RW",
+    "Player": "Michael Olise",
+    "source_player_id": "247827",
+    "source_primary_position": "RM",
+    "source_alternate_positions": "RW CAM"
+  },
+  {
+    "PlayerID": "P0712",
+    "Team": "Bayern Munich",
+    "Position": "ST",
+    "Player": "Luis Díaz",
+    "source_player_id": "241084",
+    "source_primary_position": "LM",
+    "source_alternate_positions": "LW ST"
+  },
+  {
+    "PlayerID": "P0801",
+    "Team": "Arsenal",
+    "Position": "GK",
+    "Player": "David Raya",
+    "source_player_id": "220901",
+    "source_primary_position": "GK",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0802",
+    "Team": "Arsenal",
+    "Position": "LB",
+    "Player": "Piero Hincapié",
+    "source_player_id": "256197",
+    "source_primary_position": "LB",
+    "source_alternate_positions": "CB"
+  },
+  {
+    "PlayerID": "P0803",
+    "Team": "Arsenal",
+    "Position": "CB",
+    "Player": "Gabriel",
+    "source_player_id": "232580",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0804",
+    "Team": "Arsenal",
+    "Position": "CB",
+    "Player": "William Saliba",
+    "source_player_id": "243715",
+    "source_primary_position": "CB",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0805",
+    "Team": "Arsenal",
+    "Position": "RB",
+    "Player": "Jurriën Timber",
+    "source_player_id": "251805",
+    "source_primary_position": "RB",
+    "source_alternate_positions": "LB CB RM"
+  },
+  {
+    "PlayerID": "P0806",
+    "Team": "Arsenal",
+    "Position": "CDM",
+    "Player": "Declan Rice",
+    "source_player_id": "234378",
+    "source_primary_position": "CDM",
+    "source_alternate_positions": "CM"
+  },
+  {
+    "PlayerID": "P0807",
+    "Team": "Arsenal",
+    "Position": "CM",
+    "Player": "Martin Ødegaard",
+    "source_player_id": "222665",
+    "source_primary_position": "CM",
+    "source_alternate_positions": "CAM"
+  },
+  {
+    "PlayerID": "P0808",
+    "Team": "Arsenal",
+    "Position": "CAM",
+    "Player": "Eberechi Eze",
+    "source_player_id": "235794",
+    "source_primary_position": "CAM",
+    "source_alternate_positions": "LW CM LM"
+  },
+  {
+    "PlayerID": "P0809",
+    "Team": "Arsenal",
+    "Position": "LW",
+    "Player": "Christos Tzolis",
+    "source_player_id": "256948",
+    "source_primary_position": "LW",
+    "source_alternate_positions": "LM"
+  },
+  {
+    "PlayerID": "P0810",
+    "Team": "Arsenal",
+    "Position": "ST",
+    "Player": "Viktor Gyökeres",
+    "source_player_id": "241651",
+    "source_primary_position": "ST",
+    "source_alternate_positions": ""
+  },
+  {
+    "PlayerID": "P0811",
+    "Team": "Arsenal",
+    "Position": "RW",
+    "Player": "Bukayo Saka",
+    "source_player_id": "246669",
+    "source_primary_position": "RW",
+    "source_alternate_positions": "RM"
+  },
+  {
+    "PlayerID": "P0812",
+    "Team": "Arsenal",
+    "Position": "ST",
+    "Player": "Kai Havertz",
+    "source_player_id": "235790",
+    "source_primary_position": "ST",
+    "source_alternate_positions": "CAM CM"
+  }
+]
