@@ -24,7 +24,7 @@ public class GoalEventTest {
     }
 
     @Test
-    public void testGoalUpdatesScoreAndStats() {
+    public void testGoalUpdatesScoreAndStats() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player scorer = newPlayer("Leo");
@@ -39,10 +39,12 @@ public class GoalEventTest {
         assertEquals(1, match.getHomeScore());
         assertEquals(1, scorer.getGoals());
         assertEquals(1, assister.getAssists());
+        assertEquals(1, home.getGoals());
+        assertEquals(1, home.getAssists());
     }
 
     @Test
-    public void testOwnGoalCountsForOtherTeam() {
+    public void testOwnGoalCountsForOtherTeam() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player defender = newPlayer("Kai");
@@ -55,10 +57,12 @@ public class GoalEventTest {
         assertEquals(1, match.getHomeScore());
         assertEquals(0, match.getAwayScore());
         assertEquals(0, defender.getGoals());
+        assertEquals(1, home.getGoals());
+        assertEquals(0, away.getGoals());
     }
 
     @Test
-    public void testSelfAssistIsBlocked() {
+    public void testSelfAssistIsBlocked() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player scorer = newPlayer("Leo");
@@ -74,7 +78,7 @@ public class GoalEventTest {
     }
 
     @Test
-    public void testPenaltyCannotHaveAssist() {
+    public void testPenaltyCannotHaveAssist() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player scorer = newPlayer("Leo");
@@ -91,7 +95,7 @@ public class GoalEventTest {
     }
 
     @Test
-    public void testScorerMustBeOnTeam() {
+    public void testScorerMustBeOnTeam() throws Exception {
         Team home = newTeam("Sharks");
         Team away = newTeam("Eagles");
         Player outsider = newPlayer("Max");
@@ -105,7 +109,7 @@ public class GoalEventTest {
     }
 
     @Test
-    public void testInvalidGoalTypeAndMinute() {
+    public void testInvalidGoalTypeAndMinute() throws Exception {
         Team home = newTeam("Sharks");
         Player scorer = newPlayer("Leo");
 
