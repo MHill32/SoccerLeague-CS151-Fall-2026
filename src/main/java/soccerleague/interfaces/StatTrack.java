@@ -4,6 +4,6 @@ public interface StatTrack {
     String getName();
     int getGoals();
     int getAssists();
-    int getYellowCards;
+    int getYellowCards();
     int getRedCards();
 }
