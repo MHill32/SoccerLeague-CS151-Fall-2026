@@ -1,5 +1,6 @@
 package main.test.java.soccerleague;
 
+import main.java.soccerleague.model.Coach;
 import main.java.soccerleague.model.Player;
 import main.java.soccerleague.model.Team;
 import org.junit.jupiter.api.Test;
@@ -140,5 +141,56 @@ public class TeamTest {
         new Team("TEAM-DUP-ID", "Arsenal", "London");
         assertThrows(IllegalArgumentException.class,
                 () -> new Team(" TEAM-DUP-ID ", "Liverpool", "Liverpool"));
+    }
+
+    @Test
+    public void testCoachCannotJoinTwoTeams() {
+        Team first = new Team("COACH-OWNER-A", "First", "City");
+        Team second = new Team("COACH-OWNER-B", "Second", "City");
+        Coach coach = new Coach("COACH-OWNER-C", "Alex", "4-3-3");
+        first.addCoach(coach);
+
+        assertThrows(IllegalStateException.class, () -> second.addCoach(coach));
+        assertSame(coach, first.getCoach());
+        assertNull(second.getCoach());
+    }
+
+    @Test
+    public void testCoachCanJoinAnotherTeamAfterRemoval() {
+        Team first = new Team("COACH-REASSIGN-A", "First", "City");
+        Team second = new Team("COACH-REASSIGN-B", "Second", "City");
+        Coach coach = new Coach("COACH-REASSIGN-C", "Alex", "4-3-3");
+        first.addCoach(coach);
+        first.removeCoach();
+        second.addCoach(coach);
+
+        assertNull(first.getCoach());
+        assertSame(coach, second.getCoach());
+        assertThrows(IllegalStateException.class, () -> first.addCoach(coach));
+    }
+
+    @Test
+    public void testFailedCoachAssignmentDoesNotReserveCoach() {
+        Team first = new Team("COACH-FAIL-A", "First", "City");
+        Team second = new Team("COACH-FAIL-B", "Second", "City");
+        Coach current = new Coach("COACH-FAIL-CURRENT", "Alex", "4-3-3");
+        Coach incoming = new Coach("COACH-FAIL-INCOMING", "Sam", "4-4-2");
+        first.addCoach(current);
+
+        assertThrows(IllegalStateException.class, () -> first.addCoach(incoming));
+        second.addCoach(incoming);
+        assertSame(current, first.getCoach());
+        assertSame(incoming, second.getCoach());
+    }
+
+    @Test
+    public void testInvalidCoachOperationsPreserveAssignment() {
+        Team team = new Team("COACH-INVALID-TEAM", "First", "City");
+        assertThrows(IllegalStateException.class, team::removeCoach);
+        assertThrows(IllegalArgumentException.class, () -> team.addCoach(null));
+        Coach coach = new Coach("COACH-INVALID-ASSIGN", "Alex", "4-3-3");
+        team.addCoach(coach);
+        assertThrows(IllegalStateException.class, () -> team.addCoach(coach));
+        assertSame(coach, team.getCoach());
     }
 }
