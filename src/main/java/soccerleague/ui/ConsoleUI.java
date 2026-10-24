@@ -3,17 +3,20 @@ package main.java.soccerleague.ui;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.soccerleague.data.PlayerDataLoader;
 import main.java.soccerleague.exceptions.DuplicateObjectException;
+import main.java.soccerleague.exceptions.InvalidMatchOperationException;
 import main.java.soccerleague.exceptions.MaximumInstancesException;
 import main.java.soccerleague.model.League;
+import main.java.soccerleague.model.Player;
 import main.java.soccerleague.model.Team;
 import main.java.soccerleague.model.Standing;
 import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.MatchEvent;
-import main.java.soccerleague.exceptions.InvalidMatchOperationException;
+import main.java.soccerleague.model.Coach;
 
 public class ConsoleUI {
     
@@ -22,10 +25,10 @@ public class ConsoleUI {
 
         // Load the starting teams and players only once
         try{
-            for (Team team : PlayerDataLoader.loadTeams (Path.of("data", "players.csv"))){
+            for (Team team : PlayerDataLoader.loadTeams (Path.of("data", "players.csv"), 4)){
                 league.promoteTeam(team);
             }
-            System.out.println("Loaded 8 teams and 96 players.");
+            System.out.println("Loaded 4 teams and their players.");
 
         } catch (IOException | DuplicateObjectException | MaximumInstancesException exception){
             System.out.println("Could not load player data: " + exception.getMessage());
@@ -38,11 +41,10 @@ public class ConsoleUI {
         while (running) {
             System.out.println();
             System.out.println("===== SOCCER LEAGUE MANAGER =====");
-            System.out.println("1. View teams");
-            System.out.println("2. Players");
-            System.out.println("3. Coaches and lineups");
-            System.out.println("4. Matches");
-            System.out.println("5. League standings");
+            System.out.println("1. View Teams");
+            System.out.println("2. Manage Teams and Players");
+            System.out.println("3. Manage Matches");
+            System.out.println("4. View League standings");
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");   
 
@@ -57,15 +59,12 @@ public class ConsoleUI {
                     displayTeams(league);
                     break;
                 case "2":
-                    System.out.println("This menu is not implemented yet.");
+                    manageTeams(league, scanner);
                     break;
                 case "3":
-                    System.out.println("This menu is not implemented yet.");
-                    break;
-                case "4":
                     matchesMenu(league, scanner);
                     break;
-                case "5":
+                case "4":
                     displayStandings(league);
                     break;
                 case "0":
@@ -75,7 +74,7 @@ public class ConsoleUI {
                     if (choice.equalsIgnoreCase("EXIT")) {
                         running = false;
                     } else {
-                        System.out.println("Invalid option. Choose bewtween 0 and 5.");
+                        System.out.println("Invalid option. Choose bewtween 0 and 4.");
                     }
                     break;
             }
@@ -85,6 +84,7 @@ public class ConsoleUI {
         scanner.close();
     }
 
+    //1. Teams menu
     private static void displayTeams(League league) {
     System.out.println();
     System.out.println("===== TEAMS =====");
@@ -98,31 +98,236 @@ public class ConsoleUI {
         System.out.println(team); // uses toString()
         }
     }
-    
-    private static void displayStandings(League league) {
-        league.updateStandings();
 
+    //2. Team and Player Management menu
+    private static void manageTeams(League league, Scanner scanner) {
         System.out.println();
-        System.out.println("===== LEAGUE STANDINGS =====");
+        System.out.println("===== TEAM MANAGEMENT =====");
+        System.out.println("1. Create Team");
+        System.out.println("2. Add Players to Team");
+        System.out.println("3. Assign/View Team Coach");
+        System.out.println("4. Set/View Starting Lineup");
+        System.out.println("0. Exit");
+        System.out.print("Choose an option: ");
 
-        if (league.getRankedStandings().isEmpty()){
-            System.out.println("No standings available.");
+        String choice = scanner.nextLine().trim();
+
+        switch (choice) {
+            case "1":
+                createTeam(league, scanner);
+                break;
+            case "2":
+                createPlayer(league, scanner);
+                break;
+            case "3":
+                manageCoach(league, scanner);
+                break;
+            case "4":
+                manageLineup(league, scanner);
+                break;
+            case "0":
+                return;
+            default:
+                if (choice.equalsIgnoreCase("EXIT")) {
+                    System.out.println("Goodbye!");
+        }
+    }
+}
+    //Create team menu for team management
+    private static void createTeam(League league, Scanner scanner) {
+        System.out.println();
+        System.out.println("==== CREATE TEAM =====");
+
+        System.out.print("Enter team ID (EX: T01)1: ");
+        String id = scanner.nextLine().trim();
+
+        System.out.print("Enter team name: ");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Enter team city: ");
+        String city = scanner.nextLine().trim();
+
+        try {
+            Team newTeam = new Team(id, name, city);
+            league.promoteTeam(newTeam);
+            System.out.println("Team created successfully.");
+            System.out.println(newTeam);
+        } catch (Exception e) {
+            System.out.println("Could not create team: " + e.getMessage());
+        }
+    }
+
+    //Helper method to select team from league
+    private static Team selectTeam(League league, Scanner scanner) {
+        System.out.println();
+        System.out.println("\n==== SELECT TEAM =====");
+
+        for (int i = 0; i < league.getTeams().size(); i++) {
+            Team team = league.getTeams().get(i);
+            System.out.println((i + 1) + ". " + team.getName());
+        }
+        System.out.print("Enter team number (0 to exit): ");
+
+        try {
+            int choice = Integer.parseInt(scanner.nextLine().trim());
+            
+            if (choice == 0) {
+                return null;
+            }
+            if (choice < 1 || choice > league.getTeams().size()) {
+                System.out.println("Invalid team number.");
+                return null;
+            }
+            return league.getTeams().get(choice - 1);
+        } catch (NumberFormatException e) {
+            System.out.println("Enter a valid number.");
+            return null;
+        }
+    }
+
+    //Create player menu for player management
+    private static void createPlayer(League league, Scanner scanner) {
+        System.out.println();
+        System.out.println("==== CREATE PLAYER =====");
+
+        Team team = selectTeam(league, scanner);
+
+        if (team == null) {
             return;
         }
-        
-        System.out.printf(
-            "%-21s %3s %3s %3s %3s %4s %4s %4s %4s%n",
-            "Team", "P", "W", "D", "L", "GF", "GA", "GD", "PTS"
-        );
 
-        for (Standing standing : league.getRankedStandings()) {
-            System.out.println(standing); // uses toString()
+        System.out.print("Enter player ID: ");
+        String id = scanner.nextLine().trim();
+
+        System.out.print("Enter player name: ");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Enter player position (GK, DEF, MID, FWD): ");
+        String position = scanner.nextLine().trim();
+
+        try {
+            System.out.print("Enter jersey number (1-99): ");
+            int jerseyNumber = Integer.parseInt(scanner.nextLine().trim());
+
+            System.out.print("Enter player age (16-50): ");
+            int age = Integer.parseInt(scanner.nextLine().trim());
+
+            System.out.print("Enter overall rating (0-99): ");
+            int overall = Integer.parseInt(scanner.nextLine().trim());
+
+            Player newPlayer = new Player(
+                id, 
+                name, 
+                position, 
+                jerseyNumber, 
+                age, 
+                overall, //Overall
+                overall, //Pace
+                overall, //Shooting
+                overall, //Passing
+                overall, //Dribbling
+                overall, //Defending
+                overall, //Physicality
+                overall, //Simulated attack
+                50       //Simulated discipline
+            );
+            team.addPlayer(newPlayer);
+            System.out.println("Player created successfully.");
+            System.out.println(newPlayer);
+            System.out.println("Added to: " + team.getName());
+            
+            } catch (RuntimeException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    
+    //Assign coach to team or view team coach
+    private static void manageCoach(League league, Scanner scanner) {
+        System.out.println();
+        System.out.println("==== TEAM COACH =====");
+        
+        Team team = selectTeam(league, scanner);
+
+        if (team == null) {
+            return;
+        }
+        if (team.getCoach() != null) {
+            System.out.println("Current coach: ");
+            System.out.println(team.getCoach());
+            return;
+        }
+        System.out.println("This team does not have a coach.");
+
+        System.out.print("Enter coach ID: ");
+        String id = scanner.nextLine().trim();
+
+        System.out.print("Enter coach name: ");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Enter formation (EX:4-3-3): ");
+        String formation = scanner.nextLine().trim();
+
+        try {
+            Coach coach = new Coach(id, name, formation);
+            team.addCoach(coach);
+            System.out.println("Coach added successfully.");
+            System.out.println(coach);
+
+        } catch (RuntimeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    //Sets 11 players from a team to starting lineup
+    private static void manageLineup(League league, Scanner scanner) {
+        System.out.println("\n===== STARTING LINEUP =====");
+
+        Team team = selectTeam(league, scanner);
+        if (team == null) {
+            return;
         }
 
-        System.out.println();
-        System.out.println("P: Played | W: Wins | D: Draws | L: Losses");
-        System.out.println("GF: Goals for | GA: Goals against");
-        System.out.println("GD: Goal difference | PTS: Points");
+        Coach coach = team.getCoach();
+        if (coach == null) {
+            System.out.println("Assign a coach to this team first.");
+            return;
+        }
+
+        if (!coach.getStartingLineup().isEmpty()) {
+            System.out.println("Starting lineup for " + team.getName());
+
+            for (Player player : coach.getStartingLineup()) {
+                System.out.println(player.getName() + " | " + player.getPosition());
+            }
+            return;
+        }
+        ArrayList<Player> lineup = new ArrayList<>();
+        Player goalkeeper = null;
+        for (Player player : team.getPlayers()) {
+            if (player.getPosition().equalsIgnoreCase("GK")) {
+                if (goalkeeper == null) {
+                    goalkeeper = player;
+                }
+            } else if (lineup.size() < 10) {
+                lineup.add(player);
+            }
+        }
+        if (goalkeeper == null || lineup.size() < 10) {
+            System.out.println("Team needs 1 goalkeeper and 10 other players.");
+            return;
+        }
+        lineup.add(0, goalkeeper);
+
+        try {
+            coach.selectStartingLineup(lineup);
+            System.out.println("Starting lineup selected successfully!");
+
+            for (Player player : coach.getStartingLineup()) {
+                System.out.println(player.getName() + " | " + player.getPosition());
+            }
+        } catch (RuntimeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private static void matchesMenu(League league, Scanner scanner) {
@@ -322,4 +527,32 @@ private static String readInput(Scanner scanner, String prompt) {
 
     return scanner.nextLine().trim();
 }
+
+    //4. League standings
+    private static void displayStandings(League league) {
+        league.updateStandings();
+
+        System.out.println();
+        System.out.println("===== LEAGUE STANDINGS =====");
+
+        if (league.getRankedStandings().isEmpty()){
+            System.out.println("No standings available.");
+            return;
+        }
+        
+        System.out.printf(
+            "%-21s %3s %3s %3s %3s %4s %4s %4s %4s%n",
+            "Team", "P", "W", "D", "L", "GF", "GA", "GD", "PTS"
+        );
+
+        for (Standing standing : league.getRankedStandings()) {
+            System.out.println(standing); // uses toString()
+        }
+
+        System.out.println();
+        System.out.println("P: Played | W: Wins | D: Draws | L: Losses");
+        System.out.println("GF: Goals for | GA: Goals against");
+        System.out.println("GD: Goal difference | PTS: Points");
+    }
 }
+

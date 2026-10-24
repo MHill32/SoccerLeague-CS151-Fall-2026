@@ -115,13 +115,17 @@ public class Standing {
     // Display standing/stats
     @Override
     public String toString() {
-        return "Played: " + matchesPlayed
-                + ", Wins: " + wins
-                + ", Draws: " + draws
-                + ", Losses: " + losses
-                + ", Goals For: " + goalsFor
-                + ", Goals Against: " + goalsAgainst
-                + ", Points: " + points
-                + ", Goal Difference: " + getGoalDifference();  
+        return String.format(
+            "%-21s %3d %3d %3d %3d %4d %4d %4d %4d", 
+            team.getName(),
+            matchesPlayed,
+            wins,
+            draws,
+            losses,
+            goalsFor,
+            goalsAgainst,
+            getGoalDifference(),
+            points
+        );
     }
 }

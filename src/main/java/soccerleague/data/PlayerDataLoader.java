@@ -25,10 +25,17 @@ public final class PlayerDataLoader {
     }
 
     public static ArrayList<Team> loadTeams(Path csvPath) throws IOException {
+        return loadTeams(csvPath, 100);
+    }
+
+    public static ArrayList<Team> loadTeams(Path csvPath, int maxTeams) throws IOException {
+        if (maxTeams < 1 || maxTeams > 100) {
+            throw new IllegalArgumentException("Team limit must be between 1 and 100");
+        }
         if (csvPath == null) {
             throw new IllegalArgumentException("CSV path cannot be null");
         }
-
+        
         ArrayList<Map<String, String>> rows = new ArrayList<>();
         HashSet<String> playerIDs = new HashSet<>();
         LinkedHashMap<String, String> cities = new LinkedHashMap<>();
@@ -93,6 +100,17 @@ public final class PlayerDataLoader {
         if (rows.isEmpty()) {
             throw new IOException("Player CSV contains no players");
         }
+
+        LinkedHashMap<String, String> selectedCities = new LinkedHashMap<>();
+        
+        for (Map.Entry<String, String> entry : cities.entrySet()) {
+            if (selectedCities.size() >= maxTeams) {
+                break;
+            }
+            selectedCities.put(entry.getKey(), entry.getValue());
+        }
+        cities = selectedCities;
+        rows.removeIf(row -> !selectedCities.containsKey(row.get("Team")));
 
         LinkedHashMap<String, Team> teams = new LinkedHashMap<>();
         try {
