@@ -53,7 +53,7 @@ public class CardEventTest {
         CardEvent second = new CardEvent(70, player, home, "YELLOW", "dissent");
         match.addEvent(second);
 
-        assertTrue(second.isSecondYellow());
+        assertEquals("SECOND YELLOW (RED CARD)", second.getEventType());
         assertTrue(second.isSendingOff());
         assertEquals(2, player.getYellowCards());
         assertEquals(1, player.getRedCards());

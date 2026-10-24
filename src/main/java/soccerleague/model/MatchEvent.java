@@ -36,10 +36,6 @@ public abstract class MatchEvent {
 
     public abstract String getEventType();
 
-    public int getMinute() {
-        return minute;
-    }
-
     public Player getPlayer() {
         return player;
     }
@@ -48,37 +44,12 @@ public abstract class MatchEvent {
         return team;
     }
 
-    public boolean isApplied() {
-        return applied;
-    }
-
     protected void setApplied(boolean applied) {
         this.applied = applied;
     }
 
     public boolean isValidMinute() {
         return minute >= 0 && minute <= MAX_MINUTE;
-    }
-
-    public boolean isFirstHalf() {
-        return minute <= 45;
-    }
-
-    public boolean occurredBefore(MatchEvent other) {
-        if (other == null) {
-            throw new IllegalArgumentException("Other event cannot be null");
-        }
-        return this.minute < other.minute;
-    }
-
-    public void changeMinute(int newMinute) throws InvalidMatchOperationException {
-        if (applied) {
-            throw new InvalidMatchOperationException("Cannot change the minute after the event was added to a match");
-        }
-        if (newMinute < 0 || newMinute > MAX_MINUTE) {
-            throw new InvalidMatchOperationException("Minute must be between 0 and " + MAX_MINUTE);
-        }
-        this.minute = newMinute;
     }
 
     protected void validateParticipant(Match match) throws InvalidMatchOperationException {
