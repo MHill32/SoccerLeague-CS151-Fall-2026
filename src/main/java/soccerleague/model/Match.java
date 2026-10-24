@@ -5,6 +5,7 @@ package main.java.soccerleague.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import main.java.soccerleague.exceptions.InvalidMatchOperationException;
 
@@ -116,6 +117,69 @@ public class Match {
 
         completed = true;
     }
+
+    //Simulates a 90 minute match
+    public void simulateMatch() throws InvalidMatchOperationException {
+        simulateMatch(new Random());
+    }
+
+    //Chances of a goal or card during match
+    public void simulateMatch(Random random) throws InvalidMatchOperationException {
+        if (random == null) {
+            throw new IllegalArgumentException("Random cannot be null");
+        }
+
+        if (started || completed) {
+            throw new InvalidMatchOperationException("Match has already started or ended");
+        }
+
+        if (homeTeam.getPlayers().isEmpty() || awayTeam.getPlayers().isEmpty()) {
+            throw new InvalidMatchOperationException("Both teams must have at least one player");
+        }
+
+        startMatch();
+        for (int minute = 1; minute <= 90; minute++) {
+            Team[] teams = {homeTeam, awayTeam};
+
+            for (Team team : teams) {
+                Player player = randomAvailablePlayer(team, random);
+
+                if (player == null) {
+                    continue;
+                }
+                //1.35 expected goals per team per match
+                if (random.nextDouble() < 0.015) {
+                    addEvent(new GoalEvent(minute, player, team, "REGULAR"));
+                }
+                //0.02 expected card per team
+                if (random.nextDouble() < 0.02) {
+                    Player cardPlayer = randomAvailablePlayer(team, random);
+
+                    if (cardPlayer != null) {
+                        String cardType = random.nextDouble() < 0.1 ? "RED" : "YELLOW";
+                        addEvent(new CardEvent(minute, cardPlayer, team, cardType, "Foul"));
+                    }
+                }
+            }
+        }
+        endMatch();
+    }
+
+    //Helper that prevents players that recieved a red card from playing
+    private Player randomAvailablePlayer(Team team, Random random) {
+        ArrayList<Player> available = new ArrayList<>();
+
+        for (Player player : team.getPlayers()) {
+            if (!MatchEvent.isSentOff(this, player)) {
+                available.add(player);
+            }
+        }
+        if (available.isEmpty()) {
+            return null;
+        }
+        return available.get(random.nextInt(available.size()));
+    }
+
 
     //Determine winner
     public Team determineWinner() {
