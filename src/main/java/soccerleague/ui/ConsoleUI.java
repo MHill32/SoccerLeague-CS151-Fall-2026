@@ -59,7 +59,7 @@ public class ConsoleUI {
                     displayTeams(league);
                     break;
                 case "2":
-                    manageTeams(league, scanner);
+                    running = manageTeams(league, scanner);
                     break;
                 case "3":
                     matchesMenu(league, scanner);
@@ -100,7 +100,7 @@ public class ConsoleUI {
     }
 
     //2. Team and Player Management menu
-    private static void manageTeams(League league, Scanner scanner) {
+    private static boolean manageTeams(League league, Scanner scanner) {
         System.out.println();
         System.out.println("===== TEAM MANAGEMENT =====");
         System.out.println("1. Create Team");
@@ -110,7 +110,15 @@ public class ConsoleUI {
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
 
+        if (!scanner.hasNextLine()){
+            return false;
+        }
+
         String choice = scanner.nextLine().trim();
+
+        if (choice.equalsIgnoreCase("EXIT")){
+            return false;
+        }
 
         switch (choice) {
             case "1":
@@ -126,12 +134,13 @@ public class ConsoleUI {
                 manageLineup(league, scanner);
                 break;
             case "0":
-                return;
+                return true;
             default:
-                if (choice.equalsIgnoreCase("EXIT")) {
-                    System.out.println("Goodbye!");
-        }
+                System.out.println("Invalid option. Choose 0 through 4.");
+                break;
+                
     }
+    return true;
 }
     //Create team menu for team management
     private static void createTeam(League league, Scanner scanner) {
