@@ -354,7 +354,9 @@ public class ConsoleUI {
                     }
 
                     for (Match match : league.getMatches()) {
-                        System.out.println(match);
+                        System.out.println(match.getHomeTeam().getName() 
+                        + " vs "
+                        + match.getAwayTeam().getName());
                     }
                     break;
 
@@ -381,6 +383,12 @@ public class ConsoleUI {
             System.out.println("Could not complete action: " + exception.getMessage());
         }
     }
+}
+
+private static String matchLabel(Match match) {
+    return match.getHomeTeam().getName()
+            + " vs "
+            + match.getAwayTeam().getName();
 }
 
 private static void scheduleMatch(League league, Scanner scanner) {
@@ -415,7 +423,7 @@ private static void scheduleMatch(League league, Scanner scanner) {
     league.scheduleMatch(match);
 
     System.out.println("Scheduled:");
-    System.out.println(match);
+    System.out.println(matchLabel(match));
 }
 
 private static void simulateSelectedMatch(
@@ -447,7 +455,12 @@ private static void simulateSelectedMatch(
     league.updateStandings();
 
     System.out.println("===== FINAL RESULT =====");
-    System.out.println(match);
+    System.out.println(
+        match.getHomeTeam().getName()
+        + " " + match.getHomeScore()
+        + " - " + match.getAwayScore()
+        + " " + match.getAwayTeam().getName()
+);
 
     for (MatchEvent event : match.getEvents()) {
         System.out.println(event);
@@ -465,7 +478,7 @@ private static void showMatchEvents(League league, Scanner scanner) {
         return;
     }
 
-    System.out.println(match);
+    System.out.println(matchLabel(match));
 
     if (match.getEvents().isEmpty()) {
         System.out.println("No events recorded.");
@@ -490,9 +503,18 @@ private static <T> T selectItem(
         System.out.println();
         System.out.println(prompt);
 
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println((i + 1) + ". " + items.get(i));
-        }
+        for (int i = 0; i < items.size(); i++) { T item = items.get(i);
+            String label;
+            if (item instanceof Team) {
+                label = ((Team) item).getName();
+            } else if (item instanceof Match) {
+                label = matchLabel((Match) item);
+            } else {
+                label = String.valueOf(item);
+            }
+
+    System.out.println((i + 1) + ". " + label);
+}
 
         System.out.println("0. Back");
 
