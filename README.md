@@ -2,11 +2,11 @@
 
 ## Overview
 Soccer League management system repository for Project 2. The system allows users: 
-- Manage, view and create teams
+- Manage, view, and create teams
 - View team stats
 - Manage and create players
 - Assign coaches to teams and set their lineups 
-- Schedule and simulate matches
+- View, schedule, and simulate matches
 - View league standings
 From an interactive menu. The system load 4 teams and their players from a CSV file. Users can create and add
 their own teams, players, assign coaches, and simulate/schedule matches as listed above. The match simulations generate goals and cards that occur during a match, and leave the result of the match in the league standings.
@@ -57,7 +57,7 @@ Main Menu:
 
 - Manage Teams and Players: Allows user to: Create new teams, Create Players, Set/View team coaches, automatically select and view starting lineups.
 
-- Manage Matches: Allows user to: Schedule matches between selected teams, simulate scheduled matches, and view completed match scores and match events.
+- Manage Matches: Allows user to: View scheduled matches, schedule matches between selected teams, simulate scheduled matches, and view completed match scores and match events.
 
 - View League Standings: Displays league standings, matches played, wins, draws, losses, goals for, goals against, goal difference, and points.
 
