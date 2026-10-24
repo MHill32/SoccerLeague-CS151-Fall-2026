@@ -30,14 +30,6 @@ public class CardEvent extends MatchEvent {
         return cardType;
     }
 
-    public String getReason() {
-        return reason;
-    }
-
-    public boolean isSecondYellow() {
-        return secondYellow;
-    }
-
     public void validatePlayer(Match match) throws InvalidMatchOperationException {
         validateParticipant(match);
         if (isSentOff(match, getPlayer())) {

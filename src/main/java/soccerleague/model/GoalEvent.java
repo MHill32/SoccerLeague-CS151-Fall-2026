@@ -28,14 +28,6 @@ public class GoalEvent extends MatchEvent {
         this.assistPlayer = assistPlayer;
     }
 
-    public Player getAssistPlayer() {
-        return assistPlayer;
-    }
-
-    public String getGoalType() {
-        return goalType;
-    }
-
     public boolean isOwnGoal() {
         return goalType.equals("OWN_GOAL");
     }
