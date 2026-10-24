@@ -120,6 +120,7 @@ public class ConsoleUI {
                 break;
             case "3":
                 manageCoach(league, scanner);
+                break;
             case "4":
                 manageLineup(league, scanner);
                 break;
@@ -158,7 +159,7 @@ public class ConsoleUI {
     //Helper method to select team from league
     private static Team selectTeam(League league, Scanner scanner) {
         System.out.println();
-        System.out.println("\n==== SELECT TEAM =====");
+        System.out.println("==== SELECT TEAM =====");
 
         for (int i = 0; i < league.getTeams().size(); i++) {
             Team team = league.getTeams().get(i);
@@ -332,27 +333,59 @@ public class ConsoleUI {
     private static void manageMatches(League league, Scanner scanner) {
         System.out.println();
         System.out.println("==== MANAGE MATCHES =====");
-        System.out.println("1. Schedule Match");
-        System.out.println("2. Simulate Match");
-        System.out.println("3. View Match Results");
+        System.out.println("1. View Matches");
+        System.out.println("2. Schedule Match");
+        System.out.println("3. Simulate Match");
+        System.out.println("4. View Match Results");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
 
+        if (!scanner.hasNextLine()) {
+            return;
+        }
+
         String choice = scanner.nextLine().trim();
+
         switch (choice) {
             case "1":
-                scheduleMatch(league, scanner);
+                viewMatches(league);
                 break;
             case "2":
-                simulateScheduledMatch(league, scanner);
+                scheduleMatch(league, scanner);
                 break;
             case "3":
-                viewMatches(league);
+                simulateScheduledMatch(league, scanner);
+                break;
+            case "4":
+                viewMatchResults(league);
                 break;
             case "0":
                 return;
             default:
                 System.out.println("Invalid option.");
+        }
+    }
+
+    //View all scheduled matches
+    private static void viewMatches(League league) {
+        System.out.println();
+        System.out.println("===== MATCHES =====");
+        
+        if (league.getMatches().isEmpty()) {
+            System.out.println("No matches scheduled.");
+            return;
+        }
+
+        for (Match match : league.getMatches()) {
+            String status = match.isCompleted() ? "Completed" : "Scheduled";
+
+            System.out.println(
+                match.getMatchId() + " | " 
+                + match.getHomeTeam().getName() 
+                + " vs. "
+                + match.getAwayTeam().getName()
+                + " | " + status
+            );
         }
     }
 
@@ -364,13 +397,13 @@ public class ConsoleUI {
         System.out.print("Enter Match ID: ");
         String matchID = scanner.nextLine().trim();
 
-        System.out.println("Select Home Team: ");
+        System.out.print("\nSelect Home Team: ");
         Team homeTeam = selectTeam(league, scanner);
         if (homeTeam == null) {
             return;
         }
 
-        System.out.println("Select Away Team: ");
+        System.out.print("\nSelect Away Team: ");
         Team awayTeam = selectTeam(league, scanner);
         if (awayTeam == null) {
             return;
@@ -388,14 +421,24 @@ public class ConsoleUI {
 
     //Simulate match between two selected teams
     private static void simulateScheduledMatch(League league, Scanner scanner) {
-        if (league.getMatches().isEmpty()) {
-            System.out.println("No matches scheduled.");
+        ArrayList<Match> scheduled = new ArrayList<>();
+        
+        for (Match match : league.getMatches()) {
+            if (!match.isStarted() && !match.isCompleted()) {
+                scheduled.add(match);
+            }
+        }
+
+        if (scheduled.isEmpty()) {
+            System.out.println("No scheduled matches available to simulate.");
             return;
         }
-        System.out.println("\n==== SELECT MATCH ====");
-        for (int i = 0; i < league.getMatches().size(); i++) {
-            Match match = league.getMatches().get(i);
 
+        System.out.println("\n==== SELECT MATCH ====");
+
+        for (int i = 0; i < scheduled.size(); i++) {
+            Match match = scheduled.get(i);
+            
             System.out.println(
                 (i + 1) + ". " 
                 + match.getHomeTeam().getName() 
@@ -411,11 +454,12 @@ public class ConsoleUI {
             if (number == 0) {
                 return;
             }
-            if (number < 1 || number > league.getMatches().size()) {
+            if (number < 1 || number > scheduled.size()) {
                 System.out.println("Invalid match number.");
                 return;
             }
-            Match match = league.getMatches().get(number - 1);
+
+            Match match = scheduled.get(number - 1);
 
             match.simulateMatch();
             league.updateStandings();
@@ -441,10 +485,10 @@ public class ConsoleUI {
         }
     }
 
-    //View scheduled matches and their results
-    private static void viewMatches(League league) {
+    //View scheduled match results
+    private static void viewMatchResults(League league) {
         System.out.println();
-        System.out.println("==== SCHEDULED MATCHES =====");
+        System.out.println("==== MATCH RESULTS =====");
 
         if (league.getMatches().isEmpty()) {
             System.out.println("No matches scheduled.");
