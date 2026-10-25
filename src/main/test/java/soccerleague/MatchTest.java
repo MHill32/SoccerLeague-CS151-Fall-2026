@@ -7,7 +7,7 @@ import main.java.soccerleague.exceptions.InvalidMatchOperationException;
 import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Team;
 
-public class MatchTest {
+public class MatchTest extends TestSupport {
     @Test 
     public void testStartMatch() {
         Team homeTeam = new Team("T01", "Arsenal", "London");

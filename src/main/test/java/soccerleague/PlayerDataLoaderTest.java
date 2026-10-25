@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PlayerDataLoaderTest {
+public class PlayerDataLoaderTest extends TestSupport {
     @TempDir
     Path temporaryDirectory;
 

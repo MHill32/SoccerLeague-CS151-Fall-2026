@@ -8,7 +8,7 @@ import main.java.soccerleague.model.League;
 import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Team;
 
-public class LeagueTest {
+public class LeagueTest extends TestSupport {
     @Test 
     public void testPromoteTeam() throws Exception {
         League league = new League("L01", "Premier League");

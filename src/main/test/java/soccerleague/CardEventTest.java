@@ -10,7 +10,7 @@ import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Player;
 import main.java.soccerleague.model.Team;
 
-public class CardEventTest {
+public class CardEventTest extends TestSupport {
 
     private static int idCounter = 0;
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TeamLimitTest {
+public class TeamLimitTest extends TestSupport {
 
     @Test
     public void testTeamLimit() {

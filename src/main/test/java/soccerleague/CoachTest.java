@@ -7,7 +7,7 @@ import main.java.soccerleague.model.Team;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CoachTest {
+public class CoachTest extends TestSupport {
     private Player player(String id, String position) {
         return new Player(id, "Player " + id, position, 9, 25,
                 80, 80, 80, 80, 80, 80, 80, 80, 80);
