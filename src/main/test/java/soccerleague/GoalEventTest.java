@@ -9,7 +9,7 @@ import main.java.soccerleague.model.Match;
 import main.java.soccerleague.model.Player;
 import main.java.soccerleague.model.Team;
 
-public class GoalEventTest {
+public class GoalEventTest extends TestSupport {
 
     private static int idCounter = 0;
 

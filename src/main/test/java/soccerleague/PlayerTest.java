@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PlayerTest {
+public class PlayerTest extends TestSupport {
 
     private Player createPlayer(String id) {
         return new Player(

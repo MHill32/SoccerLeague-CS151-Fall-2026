@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TeamTest {
+public class TeamTest extends TestSupport {
     private Player createPlayer(String id, int rating) {
         return new Player(id, "Player " + id, "ST", 9, 25,
                 rating, rating, rating, rating, rating,

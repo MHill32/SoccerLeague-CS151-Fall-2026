@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import main.java.soccerleague.model.Standing;
 import main.java.soccerleague.model.Team;
 
-public class StandingTest {
+public class StandingTest extends TestSupport {
     @Test
     public void testRecordWin() {
         Team team = new Team("T01", "Reds", "Liverpool");
